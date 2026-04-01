@@ -111,4 +111,4 @@ Desenvolvedor Android | Estudante de tecnologia |
 Este projeto é de uso livre para fins de estudo e aprendizado.  
 Sinta-se à vontade para contribuir ou adaptar às suas necessidades.
 ```
->>>>>>> d349890864611b6c8b648158998321f39d938ab3
+
