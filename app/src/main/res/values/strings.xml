@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">FlexFilmes</string>
+    <string name="hint_user">Usuário</string>
+    <string name="hint_password">Senha</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Esqueceu a senha?</string>
+    <string name="register">Cadastrar</string>
+    <string name="play">PLAY</string>
+    <string name="download">DOWNLOAD</string>
+    <string name="share">COMPARTILHAR</string>
+    <string name="home">Início</string>
+    <string name="back">Voltar</string>
+    <string name="catalog">Catálogo</string>
+</resources>

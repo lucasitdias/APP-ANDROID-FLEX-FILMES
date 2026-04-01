@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/icone_home"
+        android:title="Início"/>
+
+    <item
+        android:id="@+id/nav_search"
+        android:icon="@drawable/icone_busca"
+        android:title="Buscar"/>
+
+    <item
+        android:id="@+id/nav_catalog"
+        android:icon="@drawable/icone_catalogo"
+        android:title="Catálogo"/>
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/icone_perfil"
+        android:title="Perfil"/>
+</menu>
