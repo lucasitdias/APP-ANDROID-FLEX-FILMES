@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# APP-ANDROID-FLEX-FILMES
-=======
 
 # 🎬 FlexFilmes
 
