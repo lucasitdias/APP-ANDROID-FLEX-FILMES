@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Layout Login -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -9,7 +11,7 @@
     android:padding="24dp"
     tools:ignore="ExtraText">
 
-    <!-- Logo FlexFilmes -->
+    <!-- Logo -->
     <ImageView
         android:id="@+id/app_logo"
         android:layout_width="120dp"
@@ -18,7 +20,7 @@
         android:contentDescription="@string/app_name"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Nome do app -->
+    <!-- Nome app -->
     <TextView
         android:id="@+id/app_name"
         android:layout_width="wrap_content"
@@ -29,7 +31,7 @@
         android:textColor="@color/white"
         android:layout_marginBottom="32dp"/>
 
-    <!-- Campo de email -->
+    <!-- Input email -->
     <EditText
         android:id="@+id/input_email"
         android:layout_width="match_parent"
@@ -42,7 +44,7 @@
         android:textColorHint="@color/gray"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Campo de senha -->
+    <!-- Input senha -->
     <EditText
         android:id="@+id/input_password"
         android:layout_width="match_parent"
@@ -55,7 +57,7 @@
         android:textColorHint="@color/gray"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Checkbox "Lembre-se de mim" -->
+    <!-- Checkbox -->
     <CheckBox
         android:id="@+id/remember_me"
         android:layout_width="wrap_content"
@@ -64,7 +66,7 @@
         android:textColor="@color/gray"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Botão de login -->
+    <!-- Botão login -->
     <Button
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
@@ -75,7 +77,7 @@
         android:textStyle="bold"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Texto de ajuda -->
+    <!-- Ajuda -->
     <TextView
         android:id="@+id/help_text"
         android:layout_width="wrap_content"
@@ -87,7 +89,7 @@
         android:focusable="true"
         android:layout_marginBottom="8dp"/>
 
-    <!-- Link para cadastro (mais visível em branco) -->
+    <!-- Cadastro -->
     <TextView
         android:id="@+id/signup_text"
         android:layout_width="wrap_content"
@@ -100,7 +102,7 @@
         android:focusable="true"
         android:layout_marginBottom="24dp"/>
 
-    <!-- Aviso reCAPTCHA -->
+    <!-- Recaptcha -->
     <TextView
         android:id="@+id/recaptcha_text"
         android:layout_width="wrap_content"
@@ -110,4 +112,5 @@
         android:textSize="12sp"
         android:gravity="center"
         android:layout_marginTop="16dp"/>
+
 </LinearLayout>

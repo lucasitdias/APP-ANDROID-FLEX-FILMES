@@ -1,22 +1,38 @@
+# Versões
 [versions]
+
+# Android Gradle Plugin
 agp = "9.1.0"
+
+# Testes
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
+
+# UI
 appcompat = "1.7.1"
 material = "1.13.0"
 activity = "1.13.0"
 constraintlayout = "2.2.1"
 
+
+# Bibliotecas
 [libraries]
+
+# Testes
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+
+# UI
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
-[plugins]
-android-application = { id = "com.android.application", version.ref = "agp" }
 
+# Plugins
+[plugins]
+
+# Plugin Android
+android-application = { id = "com.android.application", version.ref = "agp" }

@@ -1,10 +1,24 @@
+<!-- Tema -->
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Tema noturno do app -->
+
+    <!-- Tema principal -->
     <style name="Theme.FlexFilmes" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
+        <!-- Cor primária -->
         <item name="colorPrimary">@color/primary</item>
+
+        <!-- Variante primária -->
         <item name="colorPrimaryVariant">@color/primaryVariant</item>
+
+        <!-- Cor secundária -->
         <item name="colorSecondary">@color/secondary</item>
+
+        <!-- Status bar -->
         <item name="android:statusBarColor">@color/primaryVariant</item>
+
+        <!-- Fundo -->
         <item name="android:background">@color/background</item>
+
     </style>
+
 </resources>

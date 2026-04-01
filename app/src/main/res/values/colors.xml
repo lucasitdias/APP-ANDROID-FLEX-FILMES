@@ -1,8 +1,22 @@
+<!-- Paleta de cores -->
 <resources>
+
+    <!-- Cor principal -->
     <color name="primary">#000000</color>
+
+    <!-- Variante da cor principal -->
     <color name="primaryVariant">#000000</color>
+
+    <!-- Cor secundária -->
     <color name="secondary">#6200EE</color>
+
+    <!-- Branco -->
     <color name="white">#FFFFFF</color>
+
+    <!-- Cinza -->
     <color name="gray">#666666</color>
+
+    <!-- Fundo -->
     <color name="background">#000000</color>
+
 </resources>

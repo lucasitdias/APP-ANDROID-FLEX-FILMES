@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Layout cadastro -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:gravity="center_horizontal"
@@ -7,7 +9,7 @@
     android:background="@color/background"
     android:padding="24dp">
 
-    <!-- Logo FlexFilmes -->
+    <!-- Logo -->
     <ImageView
         android:id="@+id/app_logo"
         android:layout_width="100dp"
@@ -27,7 +29,7 @@
         android:textColor="@color/white"
         android:layout_marginBottom="24dp"/>
 
-    <!-- Campo de nome -->
+    <!-- Input nome -->
     <EditText
         android:id="@+id/input_name"
         android:layout_width="match_parent"
@@ -40,7 +42,7 @@
         android:textColorHint="@color/gray"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Campo de email -->
+    <!-- Input email -->
     <EditText
         android:id="@+id/input_email"
         android:layout_width="match_parent"
@@ -53,7 +55,7 @@
         android:textColorHint="@color/gray"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Campo de senha -->
+    <!-- Input senha -->
     <EditText
         android:id="@+id/input_password"
         android:layout_width="match_parent"
@@ -66,7 +68,7 @@
         android:textColorHint="@color/gray"
         android:layout_marginBottom="24dp"/>
 
-    <!-- Botão de cadastro -->
+    <!-- Botão cadastrar -->
     <Button
         android:id="@+id/btn_signup"
         android:layout_width="match_parent"
