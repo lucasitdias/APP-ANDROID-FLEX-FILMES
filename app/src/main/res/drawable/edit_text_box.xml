@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Shape -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
-    <!-- Fundo escuro para manter o estilo -->
+    <!-- Fundo -->
     <solid android:color="#222222"/>
 
-    <!-- Bordas arredondadas -->
+    <!-- Bordas -->
     <corners android:radius="8dp"/>
 
-    <!-- Borda mais clara para destacar -->
+    <!-- Contorno -->
     <stroke
         android:width="2dp"
         android:color="@color/secondary"/>

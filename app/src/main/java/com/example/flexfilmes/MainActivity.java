@@ -1,20 +1,24 @@
 package com.example.flexfilmes;
 
+// Imports
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
-// Esta é a primeira tela chamada pelo Android.
-// Aqui vamos redirecionar direto para a tela de Login.
+// Activity inicial
 public class MainActivity extends AppCompatActivity {
+
+    // Inicialização
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Redireciona para LoginActivity
+        // Redirecionamento
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
-        finish(); // fecha a MainActivity para não voltar nela
+
+        // Finalizar Activity
+        finish();
     }
 }

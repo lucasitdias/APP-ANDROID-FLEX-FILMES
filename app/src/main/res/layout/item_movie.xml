@@ -1,33 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Item filme (lista geral) -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginEnd="8dp"
     android:padding="8dp">
 
-    <ImageView
-        android:id="@+id/imgMovie"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:scaleType="centerCrop"
-        android:contentDescription="Poster do filme"/>
+    <!-- Container imagem -->
+    <FrameLayout
+        android:layout_width="140dp"
+        android:layout_height="200dp">
 
+        <!-- Poster -->
+        <ImageView
+            android:id="@+id/imgMovie"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:contentDescription="Poster do filme"/>
+
+        <!-- Play overlay -->
+        <ImageView
+            android:id="@+id/btnPlayOverlay"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_play"
+            android:contentDescription="Assistir"
+            app:tint="@color/white"
+            android:layout_gravity="center"
+            android:background="#66000000"
+            android:visibility="visible"/>
+    </FrameLayout>
+
+    <!-- Título -->
     <TextView
         android:id="@+id/txtTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Título do Filme"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="bold"
+        android:gravity="center"
         android:layout_marginTop="4dp"/>
 
+    <!-- Descrição -->
     <TextView
         android:id="@+id/txtDescription"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Descrição do Filme"
         android:textColor="@color/gray"
-        android:textSize="14sp"
+        android:textSize="12sp"
+        android:gravity="center"
         android:layout_marginTop="2dp"/>
+
 </LinearLayout>

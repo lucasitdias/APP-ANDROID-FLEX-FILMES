@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Selector -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Padrão -->
+    <item android:drawable="@drawable/ic_launcher_foreground"/>
 
 </selector>

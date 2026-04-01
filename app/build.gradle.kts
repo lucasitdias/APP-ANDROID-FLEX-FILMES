@@ -1,13 +1,16 @@
+// Plugins
 plugins {
     alias(libs.plugins.android.application)
 }
 
+// Config Android
 android {
     namespace = "com.example.flexfilmes"
-    // Set compileSdk to 36 to match the maximum supported API by the layout renderer,
-    // avoiding "higher than 36" warnings caused by minor API levels.
+
+    // SDK de compilação
     compileSdk = 36
 
+    // Configurações padrão
     defaultConfig {
         applicationId = "com.example.flexfilmes"
         minSdk = 24
@@ -15,9 +18,11 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        // Runner de testes
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    // Tipos de build
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -27,17 +32,24 @@ android {
             )
         }
     }
+
+    // Compatibilidade Java
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
 }
 
+// Dependências
 dependencies {
+
+    // UI
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+
+    // Testes
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
