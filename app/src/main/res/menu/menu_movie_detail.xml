@@ -1,24 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!-- MENU DA TOOLBAR DA TELA DE DETALHE DO FILME -->
-
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <!-- BOTÃO LUPA DE PESQUISA -->
-    <!-- Usa o icone ic_search.xml -->
+    <!-- Ícone de busca -->
     <item
         android:id="@+id/action_search"
+        android:title="Buscar"
         android:icon="@drawable/ic_search"
-        android:title="Pesquisar"
-        app:showAsAction="ifRoom"/>
+        android:showAsAction="ifRoom" />
 
-    <!-- BOTÃO MENU (3 LINHAS) -->
-    <!-- Usa o icone ic_menu.xml -->
+    <!-- Menu de 3 pontos -->
     <item
-        android:id="@+id/action_menu"
+        android:id="@+id/action_more"
+        android:title="Mais"
         android:icon="@drawable/ic_menu"
-        android:title="Menu"
-        app:showAsAction="always"/>
+        android:showAsAction="never" />
 
 </menu>
