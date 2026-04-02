@@ -1,28 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Layout minha lista -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:padding="16dp">
+    android:background="@color/background">
 
-    <!-- Título -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Minha Lista"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:layout_marginBottom="12dp"/>
-
-    <!-- Lista de filmes -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_mylist"
+    <!-- TOOLBAR -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:overScrollMode="never"/>
+        android:layout_height="56dp"
+        android:background="#000000"
+        app:title="FlexFilmes"
+        app:titleTextColor="@android:color/white"
+        app:navigationIcon="@drawable/icone_voltar"
+        app:menu="@menu/menu_movie_detail"/>
+
+    <!-- Conteúdo -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <!-- Título -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Minha Lista"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Lista -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_mylist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"/>
+
+    </LinearLayout>
 
 </LinearLayout>

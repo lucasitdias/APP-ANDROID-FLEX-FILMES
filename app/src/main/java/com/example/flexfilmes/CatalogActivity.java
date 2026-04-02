@@ -169,6 +169,10 @@ public class CatalogActivity extends AppCompatActivity {
         return list;
     }
 
+    public static ArrayList<Movie> myList = new ArrayList<>();
+
+    
+
     // Botão voltar
     @Override
     public boolean onSupportNavigateUp() {

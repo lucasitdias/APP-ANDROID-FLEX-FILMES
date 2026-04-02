@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Manifesto -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.flexfilmes">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Aplicação -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,26 +11,43 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FlexFilmes">
 
-        <!-- Login -->
-        <activity android:name=".LoginActivity" android:exported="true">
+        <!-- LOGIN -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
-        <!-- Cadastro -->
-        <activity android:name=".SignUpActivity"
-            tools:ignore="Instantiatable" />
+        <!-- SIGNUP -->
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="true" />
 
-        <!-- Catálogo -->
-        <activity android:name=".CatalogActivity" android:exported="true"/>
+        <!-- MAIN -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
 
-        <!-- Detalhes -->
-        <activity android:name=".MovieDetailActivity" android:exported="true"/>
+        <!-- CATALOG -->
+        <activity
+            android:name=".CatalogActivity"
+            android:exported="true" />
 
-        <!-- Minha Lista -->
-        <activity android:name=".MyListActivity" android:exported="true"/>
+        <!-- DETAIL -->
+        <activity
+            android:name=".MovieDetailActivity"
+            android:exported="true" />
+
+        <!-- MY LIST -->
+        <activity
+            android:name=".MyListActivity"
+            android:exported="true" />
 
     </application>
+
 </manifest>

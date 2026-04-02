@@ -1,6 +1,6 @@
 package com.example.flexfilmes;
 
-// Imports
+// IMPORTS
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -14,77 +14,108 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-// Adapter de filmes
+// =====================================
+// ADAPTER DOS FILMES
+// =====================================
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
-    // Variáveis
     private Context context;
     private List<Movie> movieList;
 
-    // Construtor
+    // CONSTRUTOR
     public MovieAdapter(Context context, List<Movie> movieList) {
+
         this.context = context;
         this.movieList = movieList;
+
     }
 
-    // Criar item
+    // CRIAR VIEW
     @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_movie, parent, false);
+
+        View view = LayoutInflater
+                .from(parent.getContext())
+                .inflate(R.layout.item_movie, parent, false);
+
         return new MovieViewHolder(view);
+
     }
 
-    // Vincular dados
+    // BIND
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
+
         Movie movie = movieList.get(position);
 
-        // Dados
         holder.txtTitle.setText(movie.getTitle());
+
         holder.txtDescription.setText(movie.getDescription());
+
         holder.imgMovie.setImageResource(movie.getImageResId());
 
-        // Abrir detalhes
+        // =====================================
+        // ABRIR DETALHES
+        // =====================================
+
         View.OnClickListener openDetail = v -> {
+
             Intent intent = new Intent(context, MovieDetailActivity.class);
+
             intent.putExtra("title", movie.getTitle());
             intent.putExtra("description", movie.getDescription());
             intent.putExtra("image", movie.getImageResId());
+            intent.putExtra("year", movie.getYear());
+            intent.putExtra("age", movie.getAgeRating());
+
             context.startActivity(intent);
+
         };
 
-        // Clique imagem
         holder.imgMovie.setOnClickListener(openDetail);
 
-        // Clique play
-        if (holder.btnPlayOverlay != null) {
+        if(holder.btnPlayOverlay != null){
+
             holder.btnPlayOverlay.setOnClickListener(openDetail);
+
         }
+
     }
 
-    // Quantidade de itens
+    // QUANTIDADE
     @Override
     public int getItemCount() {
+
         return movieList.size();
+
     }
 
-    // ViewHolder
+    // =====================================
+    // VIEWHOLDER
+    // =====================================
+
     public static class MovieViewHolder extends RecyclerView.ViewHolder {
 
-        // Componentes
-        ImageView imgMovie, btnPlayOverlay;
-        TextView txtTitle, txtDescription;
+        ImageView imgMovie;
+        ImageView btnPlayOverlay;
 
-        // Construtor ViewHolder
+        TextView txtTitle;
+        TextView txtDescription;
+
         public MovieViewHolder(@NonNull View itemView) {
+
             super(itemView);
 
-            // Bind das views
             imgMovie = itemView.findViewById(R.id.imgMovie);
-            btnPlayOverlay = itemView.findViewById(R.id.btnPlayOverlay);
+
             txtTitle = itemView.findViewById(R.id.txtTitle);
+
             txtDescription = itemView.findViewById(R.id.txtDescription);
+
+            // CORREÇÃO CRASH
+            btnPlayOverlay = itemView.findViewById(R.id.btnPlayOverlay);
+
         }
     }
 }
