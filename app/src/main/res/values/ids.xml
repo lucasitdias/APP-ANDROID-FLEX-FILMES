@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ids usados explicitamente no projeto -->
+    <item name="toolbar_flexfilmes" type="id" />
+    <item name="toolbar_logo" type="id" />
+    <item name="toolbar_title" type="id" />
+</resources>

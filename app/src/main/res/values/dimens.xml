@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="toolbar_logo_size">34dp</dimen>
+    <dimen name="toolbar_icon_size">40dp</dimen>
+    <dimen name="card_width">160dp</dimen>
+    <dimen name="card_poster_height">220dp</dimen>
+    <dimen name="card_padding">8dp</dimen>
+    <dimen name="toolbar_side_padding">8dp</dimen>
+</resources>

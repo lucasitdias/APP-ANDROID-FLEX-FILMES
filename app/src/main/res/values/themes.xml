@@ -19,4 +19,11 @@
 
     </style>
 
+    <!-- Estilo para o título da Toolbar usado em toolbar_flexfilmes.xml -->
+    <style name="Toolbar.Title" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>

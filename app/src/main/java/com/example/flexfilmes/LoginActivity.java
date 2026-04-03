@@ -1,68 +1,84 @@
 package com.example.flexfilmes;
 
-// Imports
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-// Activity Login
 public class LoginActivity extends AppCompatActivity {
+
+    private static final String TAG = "LoginActivity";
 
     // Componentes
     private EditText inputEmail, inputPassword;
-    private Button btnLogin;
     private CheckBox rememberMe;
-    private TextView helpText, signupText;
 
-    // Inicialização
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Bind das views
+        // Bind das views (pode retornar null se o id não existir no layout)
         inputEmail = findViewById(R.id.input_email);
         inputPassword = findViewById(R.id.input_password);
-        btnLogin = findViewById(R.id.btn_login);
+        Button btnLogin = findViewById(R.id.btn_login);
         rememberMe = findViewById(R.id.remember_me);
-        helpText = findViewById(R.id.help_text);
-        signupText = findViewById(R.id.signup_text);
+        TextView helpText = findViewById(R.id.help_text);
+        TextView signupText = findViewById(R.id.signup_text);
 
-        // Botão Login
-        btnLogin.setOnClickListener(v -> {
-            String email = inputEmail.getText().toString();
-            String password = inputPassword.getText().toString();
-            boolean remember = rememberMe.isChecked();
+        // Segurança: checar null antes de usar
+        if (btnLogin != null) {
+            btnLogin.setOnClickListener(v -> {
+                try {
+                    String email = (inputEmail != null) ? inputEmail.getText().toString().trim() : "";
+                    String password = (inputPassword != null) ? inputPassword.getText().toString() : "";
+                    boolean remember = (rememberMe != null) && rememberMe.isChecked();
 
-            // Validação
-            if (!email.isEmpty() && !password.isEmpty()) {
+                    if (!email.isEmpty() && !password.isEmpty()) {
+                        Toast.makeText(this, "Login realizado com sucesso!", Toast.LENGTH_SHORT).show();
 
-                // Login sucesso
-                Toast.makeText(this, "Login realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                        // Navegação para catálogo
+                        Intent intent = new Intent(LoginActivity.this, CatalogActivity.class);
+                        // Se quiser passar extras, valide antes de colocar:
+                        // intent.putExtra("userEmail", email);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(this, "Preencha todos os campos.", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    // Evita crash e registrar o erro
+                    Log.e(TAG, "Erro no clique de login", e);
+                    Toast.makeText(LoginActivity.this, "Erro ao processar login. Veja o log.", Toast.LENGTH_LONG).show();
+                }
+            });
+        } else {
+            Log.w(TAG, "btn_login não encontrado no layout (findViewById retornou null). Verifique activity_login.xml");
+        }
 
-                // Navegação
-                startActivity(new Intent(LoginActivity.this, CatalogActivity.class));
-                finish();
+        if (helpText != null) {
+            helpText.setOnClickListener(v -> Toast.makeText(this, "Abrir tela de ajuda...", Toast.LENGTH_SHORT).show());
+        } else {
+            Log.w(TAG, "help_text não encontrado no layout");
+        }
 
-            } else {
-                // Erro
-                Toast.makeText(this, "Preencha todos os campos.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Ajuda
-        helpText.setOnClickListener(v -> {
-            Toast.makeText(this, "Abrir tela de ajuda...", Toast.LENGTH_SHORT).show();
-        });
-
-        // Cadastro
-        signupText.setOnClickListener(v -> {
-            startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
-        });
+        if (signupText != null) {
+            signupText.setOnClickListener(v -> {
+                try {
+                    startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+                } catch (Exception e) {
+                    Log.e(TAG, "Erro ao abrir SignUpActivity", e);
+                    Toast.makeText(LoginActivity.this, "Erro ao abrir cadastro.", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Log.w(TAG, "signup_text não encontrado no layout");
+        }
     }
 }

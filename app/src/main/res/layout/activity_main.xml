@@ -1,7 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!-- Layout base -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Caminho: app/src/main/res/layout/activity_main.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"/>
+    android:background="@color/background">
+
+    <!-- include toolbar padronizada -->
+    <include
+        layout="@layout/toolbar_flexfilmes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Conteúdo principal simples com botões de navegação -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/welcomeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bem-vindo ao FlexFilmes"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp" />
+
+        <Button
+            android:id="@+id/btnOpenCatalog"
+            android:layout_width="220dp"
+            android:layout_height="48dp"
+            android:text="Abrir Catálogo"
+            android:backgroundTint="#E50914"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnOpenMyList"
+            android:layout_width="220dp"
+            android:layout_height="48dp"
+            android:text="Minha Lista"
+            android:backgroundTint="#444444"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>

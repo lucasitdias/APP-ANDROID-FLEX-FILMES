@@ -1,32 +1,49 @@
-<!-- Strings do app -->
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Nome do app -->
+    <!-- App -->
     <string name="app_name">FlexFilmes</string>
 
-    <!-- Hint usuário -->
+    <!-- Toolbar / acessibilidade -->
+    <string name="desc_search">Pesquisar</string>
+    <string name="desc_menu">Abrir menu</string>
+
+    <!-- Hints e botões -->
     <string name="hint_user">Usuário</string>
-
-    <!-- Hint senha -->
     <string name="hint_password">Senha</string>
-
-    <!-- Botão login -->
     <string name="login">Login</string>
-
-    <!-- Esqueceu senha -->
     <string name="forgot_password">Esqueceu a senha?</string>
-
-    <!-- Cadastro -->
     <string name="register">Cadastrar</string>
 
-    <!-- Ações -->
+    <!-- Navegação / telas -->
+    <string name="home">Início</string>
+    <string name="catalog">Catálogo</string>
+    <string name="label_mylist">Minha lista</string>
+    <string name="label_continue">Continuar assistindo</string>
+    <string name="label_top">Principais escolhas para você</string>
+    <string name="label_recent">Adicionados recentemente</string>
+
+    <!-- Menus e ações -->
+    <string name="search">Pesquisar</string>
+    <string name="menu">Menu</string>
+    <string name="profile">Perfil</string>
+    <string name="action_settings">Configurações</string>
+    <string name="action_more">Mais</string>
+    <string name="action_more_desc">Mais opções</string>
+
+    <!-- Mensagens e textos curtos -->
+    <string name="no_results">Nenhum filme encontrado</string>
+    <string name="search_title">Pesquisar</string>
+    <string name="close">Fechar</string>
+
+    <!-- Labels de botões e ações -->
     <string name="play">PLAY</string>
     <string name="download">DOWNLOAD</string>
     <string name="share">COMPARTILHAR</string>
 
-    <!-- Navegação -->
-    <string name="home">Início</string>
-    <string name="back">Voltar</string>
-    <string name="catalog">Catálogo</string>
+    <!-- Outros rótulos usados -->
+    <string name="age_label">Faixa Etária</string>
+    <string name="genre_label">Gênero</string>
 
+    <string name="search_hint">Pesquisar filmes</string>
 </resources>

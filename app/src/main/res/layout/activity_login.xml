@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Layout Login -->
+<!-- Layout Login
+     Alteração: checkbox "Lembre-se de mim" alinhado à esquerda abaixo do campo senha.
+     Mantive a estrutura original e apenas ajustei o comportamento do checkbox.
+-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -31,40 +34,51 @@
         android:textColor="@color/white"
         android:layout_marginBottom="32dp"/>
 
-    <!-- Input email -->
-    <EditText
-        android:id="@+id/input_email"
+    <!-- Container dos campos (mantém largura full e alinha elementos internos) -->
+    <LinearLayout
+        android:id="@+id/form_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email ou número de telefone"
-        android:inputType="textEmailAddress"
-        android:background="@drawable/edit_text_box"
-        android:padding="12dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/gray"
-        android:layout_marginBottom="16dp"/>
+        android:orientation="vertical">
 
-    <!-- Input senha -->
-    <EditText
-        android:id="@+id/input_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Senha"
-        android:inputType="textPassword"
-        android:background="@drawable/edit_text_box"
-        android:padding="12dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/gray"
-        android:layout_marginBottom="16dp"/>
+        <!-- Input email -->
+        <EditText
+            android:id="@+id/input_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email ou número de telefone"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/edit_text_box"
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gray"
+            android:layout_marginBottom="16dp"/>
 
-    <!-- Checkbox -->
-    <CheckBox
-        android:id="@+id/remember_me"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lembre-se de mim"
-        android:textColor="@color/gray"
-        android:layout_marginBottom="16dp"/>
+        <!-- Input senha -->
+        <EditText
+            android:id="@+id/input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Senha"
+            android:inputType="textPassword"
+            android:background="@drawable/edit_text_box"
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gray"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Checkbox alinhado à esquerda: ocupa largura total do container,
+             mas o texto fica alinhado ao início (start) respeitando o padding do root -->
+        <CheckBox
+            android:id="@+id/remember_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lembre-se de mim"
+            android:textColor="@color/gray"
+            android:gravity="start"
+            android:layout_marginBottom="16dp"/>
+
+    </LinearLayout>
 
     <!-- Botão login -->
     <Button

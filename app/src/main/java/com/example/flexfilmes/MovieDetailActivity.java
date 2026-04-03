@@ -1,6 +1,5 @@
 package com.example.flexfilmes;
 
-// IMPORTS
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,40 +19,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-/*
-  MovieDetailActivity.java
-  Caminho: app/src/main/java/com/example/flexfilmes/MovieDetailActivity.java
-
-  Correções aplicadas:
-  - Usa o id correto do toolbar: R.id.toolbar_flexfilmes (coerente com toolbar_flexfilmes.xml).
-  - Adiciona método setupToolbar(boolean) para padronizar comportamento.
-  - Chama setupToolbar(true) em onCreate para exibir a seta de voltar.
-  - Proteções contra NPE em findViewById e uso de views.
-  - Mantém toda a lógica original (play trailer, compartilhar, download, estrelas, recomendados).
-*/
-
 public class MovieDetailActivity extends AppCompatActivity {
 
-    // estrelas avaliação
     private ImageView star1, star2, star3, star4, star5;
-
     private int rating = 0;
 
-    // =======================================
-    // INICIO DA ACTIVITY
-    // =======================================
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_movie_detail);
 
         // configurar toolbar padronizada (usa toolbar_flexfilmes do layout include)
         setupToolbar(true);
 
-        // =======================================
-        // COMPONENTES
-        // =======================================
         ImageView imgMovie = findViewById(R.id.imgMovie);
         ImageView playOverlay = findViewById(R.id.playOverlay);
         TextView txtTitle = findViewById(R.id.txtTitle);
@@ -63,32 +41,25 @@ public class MovieDetailActivity extends AppCompatActivity {
         View btnShare = findViewById(R.id.btnShare);
         View btnMyList = findViewById(R.id.btnMyList);
 
-        // =======================================
-        // ESTRELAS
-        // =======================================
         star1 = findViewById(R.id.star1);
         star2 = findViewById(R.id.star2);
         star3 = findViewById(R.id.star3);
         star4 = findViewById(R.id.star4);
         star5 = findViewById(R.id.star5);
 
-        // =======================================
-        // RECEBER DADOS DO FILME
-        // =======================================
+        // Receber extras do Intent (agora incluindo genre e year)
         String title = getIntent().getStringExtra("title");
         String description = getIntent().getStringExtra("description");
         int image = getIntent().getIntExtra("image", 0);
         int year = getIntent().getIntExtra("year", 2024);
+        String genre = getIntent().getStringExtra("genre");
         String age = getIntent().getStringExtra("age");
 
-        // evitar crash se idade vier null
-        if (age == null) {
-            age = "";
-        }
+        // evitar nulls
+        if (genre == null) genre = "";
+        if (age == null) age = "";
 
-        // =======================================
-        // MOSTRAR DADOS (verificações para evitar NPE)
-        // =======================================
+        // Mostrar dados na UI (verificações para evitar NPE)
         if (txtTitle != null && title != null) {
             txtTitle.setText(title);
         }
@@ -96,15 +67,15 @@ public class MovieDetailActivity extends AppCompatActivity {
             txtDescription.setText(description);
         }
         if (txtInfo != null) {
-            txtInfo.setText(year + " • " + age);
+            String ageLabel = age.isEmpty() ? "+14" : age;
+            String genreLabel = genre.isEmpty() ? "Gênero desconhecido" : genre;
+            txtInfo.setText("Ano: " + year + "  •  Gênero: " + genreLabel + "  •  Faixa Etaria: " + ageLabel);
         }
         if (imgMovie != null && image != 0) {
             imgMovie.setImageResource(image);
         }
 
-        // =======================================
-        // PLAY TRAILER
-        // =======================================
+        // PLAY TRAILER (abre busca no YouTube)
         if (playOverlay != null) {
             playOverlay.setOnClickListener(v -> {
                 String q = (title != null) ? title : "";
@@ -114,18 +85,14 @@ public class MovieDetailActivity extends AppCompatActivity {
             });
         }
 
-        // =======================================
         // DOWNLOAD
-        // =======================================
         if (btnDownload != null) {
             btnDownload.setOnClickListener(v ->
                     Toast.makeText(this, "Download iniciado: " + (title != null ? title : ""), Toast.LENGTH_SHORT).show()
             );
         }
 
-        // =======================================
         // COMPARTILHAR
-        // =======================================
         if (btnShare != null) {
             btnShare.setOnClickListener(v -> {
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
@@ -136,27 +103,21 @@ public class MovieDetailActivity extends AppCompatActivity {
             });
         }
 
-        // =======================================
         // MINHA LISTA
-        // =======================================
         if (btnMyList != null) {
             btnMyList.setOnClickListener(v ->
                     Toast.makeText(this, "Adicionado à Minha Lista", Toast.LENGTH_SHORT).show()
             );
         }
 
-        // =======================================
         // SISTEMA DE ESTRELAS
-        // =======================================
         if (star1 != null) star1.setOnClickListener(v -> setRating(1));
         if (star2 != null) star2.setOnClickListener(v -> setRating(2));
         if (star3 != null) star3.setOnClickListener(v -> setRating(3));
         if (star4 != null) star4.setOnClickListener(v -> setRating(4));
         if (star5 != null) star5.setOnClickListener(v -> setRating(5));
 
-        // =======================================
         // FILMES RECOMENDADOS
-        // =======================================
         RecyclerView recyclerRecommended = findViewById(R.id.recycler_recommended);
         if (recyclerRecommended != null) {
             recyclerRecommended.setLayoutManager(
@@ -164,25 +125,16 @@ public class MovieDetailActivity extends AppCompatActivity {
             );
 
             List<Movie> recommended = CatalogActivity.getTopPicksMovies();
-
             if (recommended != null) {
                 MovieAdapter adapter = new MovieAdapter(this, recommended);
                 recyclerRecommended.setAdapter(adapter);
             }
         }
+    }
 
-    } // fim onCreate
-
-
-    // =======================================
-    // SISTEMA DE AVALIAÇÃO
-    // =======================================
     private void setRating(int value) {
-
         rating = value;
-
         ImageView[] stars = {star1, star2, star3, star4, star5};
-
         for (int i = 0; i < stars.length; i++) {
             if (stars[i] == null) continue;
             if (i < value) {
@@ -191,13 +143,9 @@ public class MovieDetailActivity extends AppCompatActivity {
                 stars[i].setImageResource(R.drawable.star_empty);
             }
         }
-
     }
 
-
-    // =======================================
-    // MENU SUPERIOR (LUPA + 3 PONTOS)
-    // =======================================
+    // Inflar menu específico desta Activity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         try {
@@ -208,49 +156,54 @@ public class MovieDetailActivity extends AppCompatActivity {
         }
     }
 
-
-    // =======================================
-    // CLIQUES DO MENU
-    // =======================================
+    // Tratar cliques do menu
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
         int id = item.getItemId();
 
         if (id == R.id.action_search) {
-            Toast.makeText(this, "Buscar...", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, CatalogActivity.class);
+            intent.putExtra("open_search", true);
+            startActivity(intent);
             return true;
-        } else if (id == R.id.action_more) {
-            Toast.makeText(this, "Mais opções...", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.action_hamburger) {
+            Toast.makeText(this, "Abrir menu", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == android.R.id.home) {
+            onBackPressed();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-
-    // =======================================
-    // MÉTODO PADRÃO PARA CONFIGURAR TOOLBAR
-    // =======================================
+    // setupToolbar sem inflar menu global
     private void setupToolbar(boolean showBackArrow) {
-        // usa o id do include toolbar_flexfilmes.xml
         Toolbar toolbar = findViewById(R.id.toolbar_flexfilmes);
-        if (toolbar == null) {
-            // fallback: tenta encontrar toolbar com id "toolbar" (compatibilidade)
-            toolbar = findViewById(R.id.toolbar);
-        }
-        if (toolbar == null) {
-            // se ainda for nulo, não tenta usar toolbar para evitar NPE
-            return;
-        }
+        if (toolbar == null) toolbar = findViewById(R.id.toolbar);
+        if (toolbar == null) return;
 
         setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+
+        View logo = toolbar.findViewById(R.id.toolbar_logo);
+        View title = toolbar.findViewById(R.id.toolbar_title);
+        View.OnClickListener goHome = v -> {
+            Intent i = new Intent(this, CatalogActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(i);
+        };
+        if (logo != null) logo.setOnClickListener(goHome);
+        if (title != null) title.setOnClickListener(goHome);
 
         if (showBackArrow) {
+            // seta de voltar
             toolbar.setNavigationIcon(R.drawable.icone_voltar);
             toolbar.setNavigationContentDescription("Voltar");
             toolbar.setNavigationOnClickListener(v -> {
-                Intent intent = new Intent(this, CatalogActivity.class); // ajuste se preferir MainActivity
+                Intent intent = new Intent(this, CatalogActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 finish();
@@ -259,28 +212,18 @@ public class MovieDetailActivity extends AppCompatActivity {
             toolbar.setNavigationIcon(null);
         }
 
-        // inflar menu padronizado (se existir)
-        try {
-            toolbar.inflateMenu(R.menu.menu_toolbar);
-        } catch (Exception e) {
-            // ignora
+        // overflow (lookup seguro)
+        int overflowId = getResources().getIdentifier("toolbar_overflow", "id", getPackageName());
+        View overflow = (overflowId != 0) ? toolbar.findViewById(overflowId) : null;
+        if (overflow != null) {
+            final Toolbar toolbarFinal = toolbar;
+            overflow.setOnClickListener(v -> toolbarFinal.showOverflowMenu());
         }
 
-        // tratar clique do ícone de busca (ImageView dentro do toolbar)
-        View searchIcon = toolbar.findViewById(R.id.toolbar_search);
-        if (searchIcon != null) {
-            searchIcon.setOnClickListener(v -> {
-                Intent intent = new Intent(this, CatalogActivity.class);
-                intent.putExtra("open_search", true);
-                startActivity(intent);
-            });
-        }
-
-        // tratar cliques do menu (overflow)
         toolbar.setOnMenuItemClickListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.menu_profile) {
-                startActivity(new Intent(this, SignUpActivity.class)); // ajuste se tiver ProfileActivity
+                startActivity(new Intent(this, SignUpActivity.class));
                 return true;
             } else if (itemId == R.id.menu_catalog) {
                 startActivity(new Intent(this, CatalogActivity.class));
@@ -294,9 +237,11 @@ public class MovieDetailActivity extends AppCompatActivity {
             } else if (itemId == R.id.menu_settings) {
                 Toast.makeText(this, "Configurações", Toast.LENGTH_SHORT).show();
                 return true;
+            } else if (itemId == R.id.action_more) {
+                Toast.makeText(this, "Mais opções", Toast.LENGTH_SHORT).show();
+                return true;
             }
             return false;
         });
     }
-
-} // fim da classe
+}

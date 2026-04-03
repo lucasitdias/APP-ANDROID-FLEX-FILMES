@@ -2,17 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- Ícone de busca (apenas 1) -->
     <item
         android:id="@+id/action_search"
-        android:title="@string/search_hint"
         android:icon="@drawable/ic_search"
+        android:title="@string/search"
         app:showAsAction="ifRoom" />
 
-    <!-- Ícone hambúrguer (à direita) -->
     <item
         android:id="@+id/action_hamburger"
-        android:title="@string/desc_menu"
         android:icon="@drawable/ic_menu"
+        android:title="@string/menu"
         app:showAsAction="always" />
 </menu>

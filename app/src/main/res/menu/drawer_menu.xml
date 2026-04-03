@@ -1,21 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!-- Menu drawer -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Início -->
     <item
         android:id="@+id/nav_home"
-        android:title="Início"/>
+        android:title="Início" />
+
+    <!-- Perfil -->
+    <item
+        android:id="@+id/nav_profile"
+        android:title="Perfil" />
 
     <!-- Minha lista -->
     <item
         android:id="@+id/nav_mylist"
-        android:title="Minha lista"/>
+        android:title="Minha lista" />
+
+    <!-- Downloads -->
+    <item
+        android:id="@+id/nav_downloads"
+        android:title="Downloads" />
+
+    <!-- Assinatura -->
+    <item
+        android:id="@+id/nav_subscription"
+        android:title="Assinatura" />
 
     <!-- Configurações -->
     <item
         android:id="@+id/nav_settings"
-        android:title="Configurações"/>
+        android:title="Configurações" />
 
 </menu>

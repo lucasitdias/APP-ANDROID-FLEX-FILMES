@@ -1,61 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!-- Item filme (lista geral) -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="@dimen/card_width"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_marginEnd="8dp"
-    android:padding="8dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true">
 
-    <!-- Container imagem -->
-    <FrameLayout
-        android:layout_width="140dp"
-        android:layout_height="200dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/card_padding"
+        android:background="@android:color/transparent">
 
-        <!-- Poster -->
-        <ImageView
-            android:id="@+id/imgMovie"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:contentDescription="Poster do filme"/>
+            android:layout_height="@dimen/card_poster_height">
 
-        <!-- Play overlay -->
-        <ImageView
-            android:id="@+id/btnPlayOverlay"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_play"
-            android:contentDescription="Assistir"
-            app:tint="@color/white"
-            android:layout_gravity="center"
-            android:background="#66000000"
-            android:visibility="visible"/>
-    </FrameLayout>
+            <ImageView
+                android:id="@+id/imgMovie"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="Poster do filme" />
 
-    <!-- Título -->
-    <TextView
-        android:id="@+id/txtTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Título do Filme"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginTop="4dp"/>
+            <View
+                android:id="@+id/poster_overlay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#40FFFFFF"
+                android:visibility="gone" />
 
-    <!-- Descrição -->
-    <TextView
-        android:id="@+id/txtDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Descrição do Filme"
-        android:textColor="@color/gray"
-        android:textSize="12sp"
-        android:gravity="center"
-        android:layout_marginTop="2dp"/>
+            <ImageView
+                android:id="@+id/btnPlayOverlay"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_play"
+                android:contentDescription="@string/play" />
 
-</LinearLayout>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Título"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_marginTop="6dp"/>
+
+        <TextView
+            android:id="@+id/txtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descrição curta"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_marginTop="2dp"
+            android:lineSpacingExtra="1dp"/>
+
+        <!-- Novo: Gênero do filme (ex.: Gênero: Ação) -->
+        <TextView
+            android:id="@+id/txtGenre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gênero: Ação"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/txtInfoYear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ano: 2024"
+                android:textColor="@color/gray"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/txtInfoAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="(Livre) +17"
+                android:textColor="@color/gray"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

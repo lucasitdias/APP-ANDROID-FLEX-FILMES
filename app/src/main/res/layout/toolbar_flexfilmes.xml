@@ -1,61 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.Toolbar
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar_flexfilmes"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="#000000"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    app:titleTextAppearance="@style/Toolbar.Title"
+    android:background="@color/primary"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
+    <!-- Conteúdo central: logo + título -->
     <LinearLayout
-        android:id="@+id/toolbar_center_container"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_gravity="center">
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/toolbar_logo"
             android:layout_width="34dp"
             android:layout_height="34dp"
-            android:src="@drawable/ic_launcher_foreground"
-            android:contentDescription="Logo FlexFilmes"
-            android:layout_marginEnd="8dp" />
+            android:src="@mipmap/ic_launcher"
+            android:contentDescription="@string/app_name" />
 
         <TextView
             android:id="@+id/toolbar_title"
+            android:layout_marginStart="8dp"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FlexFilmes"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/toolbar_right_container"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_gravity="end">
-
-        <ImageView
-            android:id="@+id/toolbar_search"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_search"
-            android:tint="@android:color/white"
-            android:contentDescription="Buscar"
-            android:layout_marginEnd="16dp"
-            android:clickable="true"
-            android:focusable="true" />
-
-    </LinearLayout>
+    <!-- REMOVIDOS: ImageView de busca e overflow (não há mais ícones embutidos aqui) -->
 
 </androidx.appcompat.widget.Toolbar>
