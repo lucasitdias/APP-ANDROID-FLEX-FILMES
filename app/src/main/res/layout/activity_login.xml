@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Seção: layout de login -->
+
+<!-- Tela login app -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -10,7 +12,7 @@
     android:padding="24dp"
     tools:ignore="ExtraText">
 
-    <!-- Logo -->
+    <!-- Logo aplicativo -->
     <ImageView
         android:id="@+id/app_logo"
         android:layout_width="120dp"
@@ -30,14 +32,14 @@
         android:textColor="@color/white"
         android:layout_marginBottom="32dp"/>
 
-    <!-- Container dos campos (mantém largura full e alinha elementos internos) -->
+    <!-- Container formulário login -->
     <LinearLayout
         android:id="@+id/form_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Input email -->
+        <!-- Campo email -->
         <EditText
             android:id="@+id/input_email"
             android:layout_width="match_parent"
@@ -51,7 +53,7 @@
             android:textColorHint="@color/gray"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Input senha -->
+        <!-- Campo senha -->
         <EditText
             android:id="@+id/input_password"
             android:layout_width="match_parent"
@@ -65,6 +67,7 @@
             android:textColorHint="@color/gray"
             android:layout_marginBottom="8dp"/>
 
+        <!-- Checkbox lembrar me -->
         <CheckBox
             android:id="@+id/remember_me"
             android:layout_width="match_parent"
@@ -87,7 +90,7 @@
         android:textStyle="bold"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Ajuda -->
+    <!-- Link ajuda -->
     <TextView
         android:id="@+id/help_text"
         android:layout_width="wrap_content"
@@ -99,7 +102,7 @@
         android:focusable="true"
         android:layout_marginBottom="8dp"/>
 
-    <!-- Cadastro -->
+    <!-- Link cadastro -->
     <TextView
         android:id="@+id/signup_text"
         android:layout_width="wrap_content"
@@ -112,7 +115,7 @@
         android:focusable="true"
         android:layout_marginBottom="24dp"/>
 
-    <!-- Recaptcha -->
+    <!-- Aviso recaptcha -->
     <TextView
         android:id="@+id/recaptcha_text"
         android:layout_width="wrap_content"

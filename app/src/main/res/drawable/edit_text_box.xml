@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Shape -->
+<!-- Background custom botão -->
+
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
-    <!-- Fundo -->
+    <!-- Cor de fundo botão -->
     <solid android:color="#222222"/>
 
-    <!-- Bordas -->
+    <!-- Cantos arredondados -->
     <corners android:radius="8dp"/>
 
-    <!-- Contorno -->
+    <!-- Contorno botão -->
     <stroke
         android:width="2dp"
         android:color="@color/secondary"/>
+
 </shape>

@@ -1,1 +1,36 @@
-/build
+# Gradle
+.gradle/
+build/
+*/build/
+
+# Android Studio
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# Arquivos temporários
+*.tmp
+*.swp
+*.bak
+
+# APK / AAB gerados
+*.aab
+
+# Keystore (NUNCA subir isso)
+*.jks
+*.keystore
+
+# Proguard
+proguard/
+
+# Capturas / debug
+captures/
+
+# NDK
+.externalNativeBuild/
+.cxx/
+
+# Google Services (se usar Firebase, cuidado)
+google-services.json

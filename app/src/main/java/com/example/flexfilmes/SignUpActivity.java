@@ -1,36 +1,26 @@
 package com.example.flexfilmes;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+// Seção: Activity de Cadastro
+public class SignUpActivity extends BaseActivity {
 
-/**
- * Seção: Activity de Cadastro
- *
- * Permite criar uma nova conta com nome, email e senha.
- * Comentários padronizados: // Seção: descrição
- */
-public class SignUpActivity extends AppCompatActivity {
-
-    // Seção: componentes
+    // Seção: views
     private EditText inputName, inputEmail, inputPassword;
     private Button btnSignUp;
 
-    // Seção: ciclo de vida
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        // Seção: ActionBar (com botão voltar e título)
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("Criar conta");
-        }
+        // Seção: toolbar
+        setupToolbarCustom(true, false);
 
         // Seção: bind das views
         inputName = findViewById(R.id.input_name);
@@ -38,34 +28,44 @@ public class SignUpActivity extends AppCompatActivity {
         inputPassword = findViewById(R.id.input_password);
         btnSignUp = findViewById(R.id.btn_signup);
 
-        // Seção: listener do botão cadastrar
+        // Seção: botão de cadastro
         if (btnSignUp != null) {
             btnSignUp.setOnClickListener(v -> {
                 String name = (inputName != null) ? inputName.getText().toString().trim() : "";
                 String email = (inputEmail != null) ? inputEmail.getText().toString().trim() : "";
                 String password = (inputPassword != null) ? inputPassword.getText().toString() : "";
 
-                // Seção: validação simples
-                if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
-                    // Sucesso
-                    Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
-                    // Voltar
-                    finish();
-                } else {
-                    // Erro
-                    Toast.makeText(this, "Preencha todos os campos.", Toast.LENGTH_SHORT).show();
+                // Seção: validação de campos
+                if (name.isEmpty()) {
+                    if (inputName != null) inputName.setError(getString(R.string.error_name_required));
+                    return;
                 }
+                if (email.isEmpty()) {
+                    if (inputEmail != null) inputEmail.setError(getString(R.string.error_email_required));
+                    return;
+                }
+                if (password.isEmpty()) {
+                    if (inputPassword != null) inputPassword.setError(getString(R.string.error_password_required));
+                    return;
+                }
+
+                // Seção: salvar dados no SharedPreferences
+                SharedPreferences prefs = getSharedPreferences("flex_prefs", MODE_PRIVATE);
+                prefs.edit()
+                        .putBoolean("logged_in", true)
+                        .putString("user_name", name)
+                        .putString("user_email", email)
+                        .apply();
+
+                // Seção: feedback
+                Toast.makeText(SignUpActivity.this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
+
+                // Seção: navegação para WelcomeActivity
+                Intent intent = new Intent(SignUpActivity.this, WelcomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
             });
         }
-    }
-
-    // Seção: botão voltar da ActionBar
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

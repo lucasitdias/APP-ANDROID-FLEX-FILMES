@@ -1,9 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Caminho: res/drawable/icone_play_large.xml -->
+
+<!-- Vector: Ícone de play (triângulo apontando para a direita) -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="48dp"
     android:height="48dp"
     android:viewportWidth="24"
     android:viewportHeight="24">
 
+    <!-- Forma do triângulo do play -->
     <path
         android:fillColor="#FFFFFF"
         android:pathData="M8,5v14l11,-7z"/>

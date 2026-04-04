@@ -1,30 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Seção: paleta de cores do projeto FlexFilmes -->
+
+<!-- Paleta cores app -->
+
 <resources>
-    <!-- Paleta principal -->
+
+    <!-- Cor primária -->
     <color name="primary">#000000</color>
+
+    <!-- Variante cor primária -->
     <color name="primaryVariant">#000000</color>
+
+    <!-- Cor secundária -->
     <color name="secondary">#6200EE</color>
 
-    <!-- Acentos -->
+    <!-- Cor destaque -->
     <color name="accent">#E50914</color>
 
-    <!-- Neutros -->
+    <!-- Cor branca -->
     <color name="white">#FFFFFF</color>
+
+    <!-- Cor cinza -->
     <color name="gray">#BDBDBD</color>
+
+    <!-- Cor cinza escuro -->
     <color name="gray_dark">#666666</color>
+
+    <!-- Cor cinza mais escuro -->
     <color name="dark_gray">#444444</color>
 
-    <!-- Fundo -->
+    <!-- Cor fundo app -->
     <color name="background">#000000</color>
 
-    <!-- Overlay sutil para posters -->
+    <!-- Cor overlay card -->
     <color name="card_overlay">#80000000</color>
 
-    <!-- Drawer -->
+    <!-- Cor header drawer -->
     <color name="drawer_header_bg">#1F1F1F</color>
+
+    <!-- Cor fundo drawer -->
     <color name="drawer_background">#111111</color>
 
+    <!-- Cor overlay poster -->
     <color name="poster_overlay">#40FFFFFF</color>
 
 </resources>

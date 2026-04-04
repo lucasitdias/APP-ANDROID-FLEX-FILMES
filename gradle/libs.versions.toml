@@ -15,7 +15,7 @@ material = "1.13.0"
 activity = "1.13.0"
 constraintlayout = "2.2.1"
 playServicesMaps3d = "0.2.0"
-
+glide = "4.16.0"
 
 # Bibliotecas
 [libraries]
@@ -31,7 +31,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 play-services-maps3d = { group = "com.google.android.gms", name = "play-services-maps3d", version.ref = "playServicesMaps3d" }
-
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 
 # Plugins
 [plugins]

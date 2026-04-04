@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Caminho: res/drawable/ic_menu.xml -->
+
+<!-- Vector: Ícone de menu hambúrguer -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
     android:viewportWidth="24"
     android:viewportHeight="24">
 
-    <!-- Ícone de menu hambúrguer -->
+    <!-- Linhas do menu -->
     <path
         android:fillColor="#FFFFFFFF"
-        android:pathData="M3,6h18v2H3V6zM3,11h18v2H3v-2zM3,16h18v2H3v-2z"/>
+        android:pathData="M3,6h18v2H3V6z" /> <!-- Linha superior -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M3,11h18v2H3v-2z" /> <!-- Linha do meio -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M3,16h18v2H3v-2z" /> <!-- Linha inferior -->
+
 </vector>

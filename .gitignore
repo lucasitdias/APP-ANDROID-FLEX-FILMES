@@ -1,15 +1,36 @@
+# Gradle
+.gradle/
+build/
+*/build/
+
+# Android Studio
+.idea/
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
+
+# Logs
+*.log
+
+# Temporários
+*.tmp
+*.swp
+*.bak
+
+# APK / AAB
+*.aab
+
+# Keystore (NUNCA subir)
+*.jks
+*.keystore
+
+# Proguard
+proguard/
+
+# Capturas
+captures/
+
+# NDK
+.externalNativeBuild/
+.cxx/
+
+# Google Services
+google-services.json

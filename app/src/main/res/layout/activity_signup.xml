@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Seção: layout cadastro (SignUpActivity) -->
+
+<!-- Tela cadastro -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:gravity="center_horizontal"
@@ -8,7 +10,7 @@
     android:background="@color/background"
     android:padding="24dp">
 
-    <!-- Logo -->
+    <!-- Logo aplicativo -->
     <ImageView
         android:id="@+id/app_logo"
         android:layout_width="100dp"
@@ -17,7 +19,7 @@
         android:contentDescription="@string/app_name"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Título -->
+    <!-- Título cadastro -->
     <TextView
         android:id="@+id/signup_title"
         android:layout_width="wrap_content"
@@ -28,7 +30,7 @@
         android:textColor="@color/white"
         android:layout_marginBottom="24dp"/>
 
-    <!-- Input nome -->
+    <!-- Campo nome -->
     <EditText
         android:id="@+id/input_name"
         android:layout_width="match_parent"
@@ -42,7 +44,7 @@
         android:textColorHint="@color/gray"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Input email -->
+    <!-- Campo email -->
     <EditText
         android:id="@+id/input_email"
         android:layout_width="match_parent"
@@ -56,7 +58,7 @@
         android:textColorHint="@color/gray"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Input senha -->
+    <!-- Campo senha -->
     <EditText
         android:id="@+id/input_password"
         android:layout_width="match_parent"

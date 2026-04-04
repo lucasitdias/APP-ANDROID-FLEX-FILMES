@@ -1,46 +1,42 @@
 package com.example.flexfilmes;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import com.google.android.material.navigation.NavigationView;
 
-/**
- * Seção: Activity de detalhe do filme
- *
- * Exibe informações do filme, permite compartilhar, adicionar à lista, baixar e avaliar.
- * Comentários padronizados: // Seção: descrição
- */
-public class MovieDetailActivity extends AppCompatActivity {
+// Seção: Activity de detalhe do filme
+public class MovieDetailActivity extends BaseActivity {
 
-    // Seção: views de avaliação
     private ImageView star1, star2, star3, star4, star5;
     private int rating = 0;
 
-    // Seção: ciclo de vida
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
 
-        // Seção: configurar toolbar padronizada (usa toolbar_flexfilmes do layout include)
-        setupToolbar(true);
+        drawerLayout = findViewById(R.id.drawerLayout);
+        NavigationView navigationView = findViewById(R.id.navigationView);
 
-        // Seção: bind das views
+        // Configura toolbar herdada
+        setupToolbarCustom(true, true);
+
+        // Seção: views
         ImageView imgMovie = findViewById(R.id.imgMovie);
         ImageView playOverlay = findViewById(R.id.playOverlay);
         TextView txtTitle = findViewById(R.id.txtTitle);
@@ -56,7 +52,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         star4 = findViewById(R.id.star4);
         star5 = findViewById(R.id.star5);
 
-        // Seção: receber extras do Intent (inclui genre, year, age)
+        // Seção: dados do Intent
         String title = getIntent().getStringExtra("title");
         String description = getIntent().getStringExtra("description");
         int image = getIntent().getIntExtra("image", 0);
@@ -64,197 +60,95 @@ public class MovieDetailActivity extends AppCompatActivity {
         String genre = getIntent().getStringExtra("genre");
         String age = getIntent().getStringExtra("age");
 
-        // Seção: evitar nulls
-        if (genre == null) genre = "";
-        if (age == null) age = "";
+        if (genre == null) genre = "Gênero";
+        if (age == null || age.isEmpty()) age = "Livre";
 
-        // Seção: mostrar dados na UI (verificações para evitar NPE)
-        if (txtTitle != null && title != null) {
-            txtTitle.setText(title);
-        }
-        if (txtDescription != null && description != null) {
-            txtDescription.setText(description);
-        }
+        // Seção: popula views
+        if (txtTitle != null) txtTitle.setText(title);
+        if (txtDescription != null) txtDescription.setText(description);
+
         if (txtInfo != null) {
-            String ageLabel = age.isEmpty() ? "+14" : age;
-            String genreLabel = genre.isEmpty() ? "Gênero desconhecido" : genre;
-            txtInfo.setText("Ano: " + year + "  •  Gênero: " + genreLabel + "  •  Faixa Etaria: " + ageLabel);
-        }
-        if (imgMovie != null && image != 0) {
-            imgMovie.setImageResource(image);
+            // Ano • Gênero • Classificação
+            String fullText = "Ano: " + year + "  •  Gênero: " + genre + "  •  " + age;
+            SpannableString spannable = new SpannableString(fullText);
+            int start = fullText.indexOf(age);
+
+            int color = Color.parseColor("#4CAF50"); // verde padrão
+            if (age.contains("16") || age.contains("18")) color = Color.RED;
+
+            spannable.setSpan(
+                    new ForegroundColorSpan(color),
+                    start,
+                    fullText.length(),
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            );
+
+            txtInfo.setText(spannable);
         }
 
-        // Seção: PLAY TRAILER (abre busca no YouTube)
+        // Seção: imagem
+        if (imgMovie != null && image != 0) imgMovie.setImageResource(image);
+
+        // Seção: botões de ação
         if (playOverlay != null) {
             playOverlay.setOnClickListener(v -> {
-                String q = (title != null) ? title : "";
-                String url = "https://www.youtube.com/results?search_query=" + Uri.encode(q + " trailer");
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                startActivity(intent);
+                String url = "https://www.youtube.com/results?search_query=" + Uri.encode(title + " trailer");
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
             });
         }
 
-        // Seção: DOWNLOAD
         if (btnDownload != null) {
-            btnDownload.setOnClickListener(v ->
-                    Toast.makeText(this, "Download iniciado: " + (title != null ? title : ""), Toast.LENGTH_SHORT).show()
-            );
+            btnDownload.setOnClickListener(v -> Toast.makeText(this, "Download iniciado: " + title, Toast.LENGTH_SHORT).show());
         }
 
-        // Seção: COMPARTILHAR
         if (btnShare != null) {
             btnShare.setOnClickListener(v -> {
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_TEXT,
-                        "Veja este filme: " + (title != null ? title : "") + "\n" + (description != null ? description : ""));
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "Veja este filme: " + title + "\n" + description);
                 startActivity(Intent.createChooser(shareIntent, "Compartilhar via"));
             });
         }
 
-        // Seção: MINHA LISTA
         if (btnMyList != null) {
-            btnMyList.setOnClickListener(v ->
-                    Toast.makeText(this, "Adicionado à Minha Lista", Toast.LENGTH_SHORT).show()
-            );
+            btnMyList.setOnClickListener(v -> Toast.makeText(this, "Adicionado à Minha Lista", Toast.LENGTH_SHORT).show());
         }
 
-        // Seção: SISTEMA DE ESTRELAS
+        // Seção: avaliação com estrelas
         if (star1 != null) star1.setOnClickListener(v -> setRating(1));
         if (star2 != null) star2.setOnClickListener(v -> setRating(2));
         if (star3 != null) star3.setOnClickListener(v -> setRating(3));
         if (star4 != null) star4.setOnClickListener(v -> setRating(4));
         if (star5 != null) star5.setOnClickListener(v -> setRating(5));
 
-        // Seção: FILMES RECOMENDADOS
+        // Seção: menu lateral
+        if (navigationView != null && drawerLayout != null) {
+            navigationView.setNavigationItemSelectedListener(item -> {
+                int id = item.getItemId();
+                if (id == R.id.nav_home) startActivity(new Intent(this, MainActivity.class));
+                else if (id == R.id.nav_profile) startActivity(new Intent(this, SignUpActivity.class));
+                else if (id == R.id.nav_mylist) startActivity(new Intent(this, MyListActivity.class));
+
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            });
+        }
+
+        // Seção: filmes recomendados
         RecyclerView recyclerRecommended = findViewById(R.id.recycler_recommended);
         if (recyclerRecommended != null) {
-            recyclerRecommended.setLayoutManager(
-                    new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-            );
-
-            List<Movie> recommended = CatalogActivity.getTopPicksMovies();
-            if (recommended != null) {
-                MovieAdapter adapter = new MovieAdapter(this, recommended);
-                recyclerRecommended.setAdapter(adapter);
-            }
+            recyclerRecommended.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+            recyclerRecommended.setAdapter(new MovieAdapter(this, CatalogActivity.getTopPicksMovies()));
         }
     }
 
-    // Seção: atualizar UI das estrelas
+    // Atualiza estrelas na UI
     private void setRating(int value) {
         rating = value;
         ImageView[] stars = {star1, star2, star3, star4, star5};
         for (int i = 0; i < stars.length; i++) {
             if (stars[i] == null) continue;
-            if (i < value) {
-                stars[i].setImageResource(R.drawable.star_filled);
-            } else {
-                stars[i].setImageResource(R.drawable.star_empty);
-            }
+            stars[i].setImageResource(i < value ? R.drawable.star_filled : R.drawable.star_empty);
         }
-    }
-
-    // Seção: Inflar menu específico desta Activity
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        try {
-            getMenuInflater().inflate(R.menu.menu_movie_detail, menu);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    // Seção: Tratar cliques do menu
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_search) {
-            Intent intent = new Intent(this, CatalogActivity.class);
-            intent.putExtra("open_search", true);
-            startActivity(intent);
-            return true;
-        } else if (id == R.id.action_hamburger) {
-            Toast.makeText(this, "Abrir menu", Toast.LENGTH_SHORT).show();
-            return true;
-        } else if (id == android.R.id.home) {
-            onBackPressed();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * Seção: setupToolbar
-     *
-     * Configura toolbar padrão e listener único para o menu (sem duplicações).
-     */
-    private void setupToolbar(boolean showBackArrow) {
-        Toolbar toolbar = findViewById(R.id.toolbar_flexfilmes);
-        if (toolbar == null) toolbar = findViewById(R.id.toolbar);
-        if (toolbar == null) return;
-
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-        }
-
-        // Seção: logo e título central clicáveis
-        View logo = toolbar.findViewById(R.id.toolbar_logo);
-        View title = toolbar.findViewById(R.id.toolbar_title);
-        View.OnClickListener goHome = v -> {
-            Intent i = new Intent(this, CatalogActivity.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            startActivity(i);
-        };
-        if (logo != null) logo.setOnClickListener(goHome);
-        if (title != null) title.setOnClickListener(goHome);
-
-        // Seção: seta de voltar
-        if (showBackArrow) {
-            toolbar.setNavigationIcon(R.drawable.icone_voltar);
-            toolbar.setNavigationContentDescription("Voltar");
-            toolbar.setNavigationOnClickListener(v -> {
-                Intent intent = new Intent(this, CatalogActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-                finish();
-            });
-        } else {
-            toolbar.setNavigationIcon(null);
-        }
-
-        // Seção: overflow (lookup seguro)
-        int overflowId = getResources().getIdentifier("toolbar_overflow", "id", getPackageName());
-        View overflow = (overflowId != 0) ? toolbar.findViewById(overflowId) : null;
-        if (overflow != null) {
-            final Toolbar toolbarFinal = toolbar;
-            overflow.setOnClickListener(v -> toolbarFinal.showOverflowMenu());
-        }
-
-        // Seção: listener único do menu (corrige duplicações anteriores)
-        toolbar.setOnMenuItemClickListener(item -> {
-            int itemId = item.getItemId();
-            if (itemId == R.id.menu_profile) {
-                startActivity(new Intent(this, SignUpActivity.class));
-                return true;
-            } else if (itemId == R.id.menu_catalog) {
-                startActivity(new Intent(this, CatalogActivity.class));
-                return true;
-            } else if (itemId == R.id.menu_home) {
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            } else if (itemId == R.id.menu_mylist) {
-                startActivity(new Intent(this, MyListActivity.class));
-                return true;
-            } else if (itemId == R.id.menu_settings) {
-                Toast.makeText(this, "Configurações", Toast.LENGTH_SHORT).show();
-                return true;
-            }
-            return false;
-        });
     }
 }

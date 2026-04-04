@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Seção: layout de busca (SearchActivity) -->
+
+<!-- Tela busca -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
 
+    <!-- Toolbar padrão app -->
     <include
         layout="@layout/toolbar_flexfilmes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <!-- SearchView ativado para busca -->
+    <!-- Campo busca -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
@@ -19,6 +22,7 @@
         android:queryHint="@string/search_hint"
         android:iconifiedByDefault="false" />
 
+    <!-- Lista resultados busca -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_search_results"
         android:layout_width="match_parent"

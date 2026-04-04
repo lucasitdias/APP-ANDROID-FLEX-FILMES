@@ -1,114 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Strings app -->
+
 <resources>
 
-    <!-- Toolbar and accessibility -->
+    <!-- Texto voltar -->
+    <string name="back">Voltar</string>
+
+    <!-- Texto pesquisar -->
     <string name="desc_search">Pesquisar</string>
+
+    <!-- Texto perfil menu -->
     <string name="menu_profile">Perfil</string>
+
+    <!-- Texto catálogo menu -->
     <string name="menu_catalog">Catálogo</string>
+
+    <!-- Texto início menu -->
     <string name="menu_home">Início</string>
+
+    <!-- Texto minha lista menu -->
     <string name="menu_mylist">Minha lista</string>
+
+    <!-- Texto configurações menu -->
     <string name="menu_settings">Configurações</string>
+
+    <!-- Texto mais opções -->
     <string name="action_more_desc">Mais opções</string>
 
-    <!-- Search -->
+    <!-- Texto dica busca -->
     <string name="search_hint">Pesquisar filmes</string>
+
+    <!-- Título busca -->
     <string name="search_title">Pesquisar</string>
+
+    <!-- Texto buscar -->
     <string name="search">Pesquisar</string>
+
+    <!-- Texto nenhum resultado -->
     <string name="no_results">Nenhum filme encontrado</string>
 
-    <!-- Login and Signup -->
+    <!-- Texto campo email -->
     <string name="hint_email">Email ou número de telefone</string>
+
+    <!-- Texto campo senha -->
     <string name="hint_password">Senha</string>
+
+    <!-- Texto lembrar login -->
     <string name="remember_me">Lembre-se de mim</string>
+
+    <!-- Texto botão login -->
     <string name="login_button">ENTRAR</string>
+
+    <!-- Texto login -->
     <string name="login">Login</string>
+
+    <!-- Texto esquecer senha -->
     <string name="forgot_password">Esqueceu a senha?</string>
+
+    <!-- Texto cadastrar -->
     <string name="register">Cadastrar</string>
+
+    <!-- Texto criar conta -->
     <string name="create_account_title">Criar conta</string>
+
+    <!-- Texto sucesso cadastro -->
     <string name="signup_success">Cadastro realizado com sucesso!</string>
+
+    <!-- Texto erro campos -->
     <string name="fill_all_fields">Preencha todos os campos.</string>
+
+    <!-- Texto ajuda -->
     <string name="help_text">Precisa de ajuda?</string>
+
+    <!-- Texto convite cadastro -->
     <string name="signup_prompt">Novo por aqui? Assine agora.</string>
 
-    <!-- Main screen -->
+    <!-- Texto erro nome -->
+    <string name="error_name_required">O nome é obrigatório</string>
+
+    <!-- Texto erro email -->
+    <string name="error_email_required">O email é obrigatório</string>
+
+    <!-- Texto erro senha -->
+    <string name="error_password_required">A senha é obrigatória</string>
+
+    <!-- Texto boas vindas -->
     <string name="welcome_text">Bem-vindo ao FlexFilmes</string>
+
+    <!-- Texto abrir catálogo -->
     <string name="open_catalog">Abrir Catálogo</string>
+
+    <!-- Texto abrir minha lista -->
     <string name="open_mylist">Minha Lista</string>
 
-    <!-- Catalog labels -->
+    <!-- Texto continuar assistindo -->
     <string name="label_continue">Continuar assistindo</string>
+
+    <!-- Texto minha lista -->
     <string name="label_mylist">Minha lista</string>
+
+    <!-- Texto top picks -->
     <string name="label_top">Principais escolhas para você</string>
+
+    <!-- Texto recentes -->
     <string name="label_recent">Adicionados recentemente</string>
 
-    <!-- Movie detail -->
+    <!-- Descrição poster -->
     <string name="movie_poster_description">Poster do filme</string>
+
+    <!-- Texto assistir trailer -->
     <string name="watch_trailer">Assistir trailer</string>
+
+    <!-- Texto download -->
     <string name="download">Download</string>
+
+    <!-- Texto compartilhar -->
     <string name="share">Compartilhar</string>
+
+    <!-- Texto adicionar lista -->
     <string name="add_to_mylist">+ Minha Lista</string>
+
+    <!-- Texto recomendados -->
     <string name="recommended_titles">Títulos semelhantes</string>
 
-    <!-- Rating accessibility -->
+    <!-- Texto estrela 1 -->
     <string name="rating_star_1">Avaliação 1 estrela</string>
+
+    <!-- Texto estrela 2 -->
     <string name="rating_star_2">Avaliação 2 estrelas</string>
+
+    <!-- Texto estrela 3 -->
     <string name="rating_star_3">Avaliação 3 estrelas</string>
+
+    <!-- Texto estrela 4 -->
     <string name="rating_star_4">Avaliação 4 estrelas</string>
+
+    <!-- Texto estrela 5 -->
     <string name="rating_star_5">Avaliação 5 estrelas</string>
 
-    <!-- App -->
+    <!-- Nome app -->
     <string name="app_name">FlexFilmes</string>
 
-    <!-- Navigation Drawer -->
+    <!-- Texto nav início -->
     <string name="nav_home">Início</string>
+
+    <!-- Texto nav perfil -->
     <string name="nav_profile">Perfil</string>
+
+    <!-- Texto nav minha lista -->
     <string name="nav_mylist">Minha lista</string>
+
+    <!-- Texto nav downloads -->
     <string name="nav_downloads">Downloads</string>
+
+    <!-- Texto nav assinatura -->
     <string name="nav_subscription">Assinatura</string>
+
+    <!-- Texto nav configurações -->
     <string name="nav_settings">Configurações</string>
+
+    <!-- Texto abrir drawer -->
     <string name="navigation_drawer_open">Abrir menu de navegação</string>
+
+    <!-- Texto fechar drawer -->
     <string name="navigation_drawer_close">Fechar menu de navegação</string>
+
+    <!-- Texto avatar perfil -->
     <string name="profile_avatar">Avatar do perfil</string>
+
+    <!-- Texto usuário convidado -->
     <string name="guest_user">Usuário Convidado</string>
+
+    <!-- Texto email convidado -->
     <string name="guest_email">convidado@flexfilmes.com</string>
 
-    <!-- Toolbar and Menus -->
+    <!-- Texto ação buscar -->
     <string name="action_search">Buscar</string>
+
+    <!-- Texto ação menu -->
     <string name="action_menu">Menu</string>
+
+    <!-- Texto menu -->
     <string name="menu">Menu</string>
+
+    <!-- Texto configurações -->
     <string name="settings">Configurações</string>
 
-    <!-- Título/descrição do menu (usado em menu_movie_detail/menu_toolbar) -->
+    <!-- Texto descrição menu -->
     <string name="desc_menu">Menu</string>
 
-    <!-- Menu Toolbar items (labels usados em menu_toolbar.xml) -->
+    <!-- Texto perfil -->
     <string name="profile">Perfil</string>
+
+    <!-- Texto catálogo -->
     <string name="catalog">Catálogo</string>
+
+    <!-- Texto início -->
     <string name="home">Início</string>
+
+    <!-- Texto configurações ação -->
     <string name="action_settings">Configurações</string>
 
-    <!-- Movie details and placeholders -->
+    <!-- Texto informações -->
     <string name="info">Informações</string>
+
+    <!-- Texto placeholder título -->
     <string name="title_placeholder">Título</string>
+
+    <!-- Texto descrição curta -->
     <string name="description_short">Descrição curta</string>
+
+    <!-- Texto gênero -->
     <string name="genre_placeholder">Gênero: Ação</string>
+
+    <!-- Texto ano -->
     <string name="info_year_placeholder">Ano: 2024</string>
+
+    <!-- Texto idade -->
     <string name="info_age_placeholder">(Livre) +17</string>
 
-    <!-- Generic UI -->
+    <!-- Texto fechar -->
     <string name="close">Fechar</string>
+
+    <!-- Texto play -->
     <string name="play">PLAY</string>
+
+    <!-- Texto faixa etária -->
     <string name="age_label">Faixa Etária</string>
+
+    <!-- Texto gênero label -->
     <string name="genre_label">Gênero</string>
+
+    <!-- Texto recaptcha -->
     <string name="recaptcha_notice">Esta página é protegida pelo Google reCAPTCHA para garantir que você não é um robô.</string>
 
-    <!-- Toasts and actions -->
+    <!-- Texto adicionado lista -->
     <string name="added_to_mylist">Adicionado à Minha Lista</string>
+
+    <!-- Texto download iniciado -->
     <string name="download_started">Download iniciado: %1$s</string>
+
+    <!-- Texto compartilhar via -->
     <string name="share_via">Compartilhar via</string>
 
-    <!-- Auth / Forms -->
+    <!-- Texto nome -->
     <string name="hint_name">Nome completo</string>
+
+    <!-- Texto botão cadastro -->
     <string name="signup_button">CADASTRAR</string>
+
+    <!-- Texto boas vindas -->
+    <string name="welcome_message">Bem-vindo ao FlexFilmes</string>
+
+    <!-- Texto boas vindas usuário -->
+    <string name="welcome_user_format">Bem-vindo, %s</string>
 
 </resources>

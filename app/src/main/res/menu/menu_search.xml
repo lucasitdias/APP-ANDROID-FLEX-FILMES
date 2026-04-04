@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Menu busca -->
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Item busca com ação expandida -->
     <item
         android:id="@+id/action_search"
         android:icon="@drawable/ic_search"

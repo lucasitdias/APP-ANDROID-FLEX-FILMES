@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Dimensões layout -->
+
 <resources>
+
+    <!-- Altura toolbar -->
     <dimen name="toolbar_height">56dp</dimen>
+
+    <!-- Tamanho logo toolbar -->
     <dimen name="toolbar_logo_size">34dp</dimen>
+
+    <!-- Tamanho ícones toolbar -->
     <dimen name="toolbar_icon_size">40dp</dimen>
+
+    <!-- Largura card -->
     <dimen name="card_width">160dp</dimen>
+
+    <!-- Altura poster card -->
     <dimen name="card_poster_height">220dp</dimen>
+
+    <!-- Espaçamento card -->
     <dimen name="card_padding">8dp</dimen>
+
+    <!-- Padding lateral toolbar -->
     <dimen name="toolbar_side_padding">8dp</dimen>
+
 </resources>

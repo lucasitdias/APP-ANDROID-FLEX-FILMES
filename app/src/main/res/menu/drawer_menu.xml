@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Menu lateral -->
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Início -->
+    <!-- Item início -->
     <item
         android:id="@+id/nav_home"
         android:title="@string/nav_home" />
 
-    <!-- Perfil -->
+    <!-- Item perfil -->
     <item
         android:id="@+id/nav_profile"
         android:title="@string/nav_profile" />
 
-    <!-- Minha lista -->
+    <!-- Item minha lista -->
     <item
         android:id="@+id/nav_mylist"
         android:title="@string/nav_mylist" />
 
-    <!-- Downloads -->
+    <!-- Item downloads -->
     <item
         android:id="@+id/nav_downloads"
         android:title="@string/nav_downloads" />
 
-    <!-- Assinatura -->
+    <!-- Item assinatura -->
     <item
         android:id="@+id/nav_subscription"
         android:title="@string/nav_subscription" />
 
-    <!-- Configurações -->
+    <!-- Item configurações -->
     <item
         android:id="@+id/nav_settings"
         android:title="@string/nav_settings" />

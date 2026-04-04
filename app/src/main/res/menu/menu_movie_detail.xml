@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Menu ações -->
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- Ícone hambúrguer (à direita) -->
+    <!-- Item busca -->
+    <item
+        android:id="@+id/action_search"
+        android:title="@string/search"
+        android:icon="@drawable/ic_search"
+        app:showAsAction="always" />
+
+    <!-- Item menu -->
     <item
         android:id="@+id/action_hamburger"
         android:title="@string/desc_menu"
         android:icon="@drawable/ic_menu"
         app:showAsAction="always" />
+
 </menu>

@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Caminho: app/src/main/res/drawable/play_overlay_bg.xml -->
+
+<!-- Shape: Fundo circular semi-transparente para overlay do botão play -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
-    <size android:width="80dp" android:height="80dp"/>
+
+    <!-- Tamanho do círculo -->
+    <size
+        android:width="80dp"
+        android:height="80dp"/>
+
+    <!-- Cor de fundo semi-transparente -->
     <solid android:color="#80000000"/>
-    <padding android:left="8dp" android:top="8dp" android:right="8dp" android:bottom="8dp"/>
+
+    <!-- Espaçamento interno -->
+    <padding
+        android:left="8dp"
+        android:top="8dp"
+        android:right="8dp"
+        android:bottom="8dp"/>
 </shape>

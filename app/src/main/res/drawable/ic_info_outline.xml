@@ -4,7 +4,9 @@
     android:viewportWidth="24"
     android:viewportHeight="24">
 
-    <!-- Ícone info -->
+    <!-- Ícone de informação -->
+
+    <!-- Cor branca para tema escuro -->
     <path
         android:fillColor="@android:color/white"
         android:pathData="M11,17h2v-6h-2v6zm0,-8h2V7h-2v2zm1,-7C6.48,2 2,6.48 2,12s4.48,10 10,10

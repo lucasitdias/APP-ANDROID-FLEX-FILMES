@@ -1,199 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Seção: layout de detalhe do filme -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!-- Tela detalhes filme -->
+
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:fitsSystemWindows="true">
 
-    <!-- include toolbar padronizada -->
-    <include
-        layout="@layout/toolbar_flexfilmes"
+    <!-- Container conteúdo principal -->
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
 
-    <!-- CONTEÚDO: usar NestedScrollView para compatibilidade com RecyclerView -->
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
-
-        <LinearLayout
-            android:orientation="vertical"
+        <!-- Toolbar padrão app -->
+        <include
+            layout="@layout/toolbar_flexfilmes"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content" />
 
-            <!-- Poster -->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp">
+        <!-- Scroll conteúdo tela -->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-                <ImageView
-                    android:id="@+id/imgMovie"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="@string/movie_poster_description" />
-
-                <!-- Play overlay estilizado: fundo circular e sombra leve -->
-                <ImageView
-                    android:id="@+id/playOverlay"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/play_overlay"
-                    android:background="@drawable/play_overlay_bg"
-                    android:padding="12dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:contentDescription="@string/watch_trailer" />
-
-            </FrameLayout>
-
-            <!-- estrelas + info -->
+            <!-- Container conteúdo -->
             <LinearLayout
-                android:orientation="horizontal"
-                android:padding="16dp"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical">
+                android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/star1"
-                    android:src="@drawable/star_empty"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:contentDescription="@string/rating_star_1" />
+                <!-- Container poster -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp">
 
-                <ImageView
-                    android:id="@+id/star2"
-                    android:src="@drawable/star_empty"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:contentDescription="@string/rating_star_2" />
+                    <!-- Imagem poster -->
+                    <ImageView
+                        android:id="@+id/imgMovie"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/movie_poster_description" />
 
-                <ImageView
-                    android:id="@+id/star3"
-                    android:src="@drawable/star_empty"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:contentDescription="@string/rating_star_3" />
+                    <!-- Botão play overlay -->
+                    <ImageView
+                        android:id="@+id/playOverlay"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/play_overlay"
+                        android:background="@drawable/play_overlay_bg"
+                        android:padding="12dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="@string/watch_trailer" />
 
-                <ImageView
-                    android:id="@+id/star4"
-                    android:src="@drawable/star_empty"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:contentDescription="@string/rating_star_4" />
+                </FrameLayout>
 
-                <ImageView
-                    android:id="@+id/star5"
-                    android:src="@drawable/star_empty"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:contentDescription="@string/rating_star_5" />
+                <!-- Container estrelas info -->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
 
+                    <!-- Estrela 1 -->
+                    <ImageView
+                        android:id="@+id/star1"
+                        android:src="@drawable/star_empty"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="@string/rating_star_1" />
+
+                    <!-- Estrela 2 -->
+                    <ImageView
+                        android:id="@+id/star2"
+                        android:src="@drawable/star_empty"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="@string/rating_star_2" />
+
+                    <!-- Estrela 3 -->
+                    <ImageView
+                        android:id="@+id/star3"
+                        android:src="@drawable/star_empty"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="@string/rating_star_3" />
+
+                    <!-- Estrela 4 -->
+                    <ImageView
+                        android:id="@+id/star4"
+                        android:src="@drawable/star_empty"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="@string/rating_star_4" />
+
+                    <!-- Estrela 5 -->
+                    <ImageView
+                        android:id="@+id/star5"
+                        android:src="@drawable/star_empty"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="@string/rating_star_5" />
+
+                    <!-- Texto info filme -->
+                    <TextView
+                        android:id="@+id/txtInfo"
+                        android:textColor="@color/gray"
+                        android:layout_marginStart="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:maxLines="1"
+                        android:ellipsize="end"/>
+
+                </LinearLayout>
+
+                <!-- Título filme -->
                 <TextView
-                    android:id="@+id/txtInfo"
-                    android:textColor="@color/gray"
-                    android:layout_marginStart="16dp"
+                    android:id="@+id/txtTitle"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <!-- Descrição filme -->
+                <TextView
+                    android:id="@+id/txtDescription"
+                    android:textColor="@color/white"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <!-- Container botões -->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
+
+                    <!-- Botão download -->
+                    <Button
+                        android:id="@+id/btnDownload"
+                        android:text="@string/download"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/dark_gray"
+                        android:layout_margin="6dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <!-- Botão compartilhar -->
+                    <Button
+                        android:id="@+id/btnShare"
+                        android:text="@string/share"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/dark_gray"
+                        android:layout_margin="6dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <!-- Container minha lista -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <!-- Botão adicionar minha lista -->
+                    <Button
+                        android:id="@+id/btnMyList"
+                        android:text="@string/add_to_mylist"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/dark_gray"
+                        android:layout_margin="6dp"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <!-- Título recomendados -->
+                <TextView
+                    android:text="@string/recommended_titles"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:padding="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
-            </LinearLayout>
-
-            <!-- título -->
-            <TextView
-                android:id="@+id/txtTitle"
-                android:textColor="@color/white"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <!-- descrição -->
-            <TextView
-                android:id="@+id/txtDescription"
-                android:textColor="@color/white"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <!-- BOTÕES -->
-            <LinearLayout
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp">
-
-                <Button
-                    android:id="@+id/btnDownload"
-                    android:text="@string/download"
-                    android:textColor="@color/white"
-                    android:backgroundTint="@color/dark_gray"
-                    android:layout_margin="6dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"/>
-
-                <Button
-                    android:id="@+id/btnShare"
-                    android:text="@string/share"
-                    android:textColor="@color/white"
-                    android:backgroundTint="@color/dark_gray"
-                    android:layout_margin="6dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"/>
+                <!-- Lista filmes recomendados -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_recommended"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:clipToPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
 
             </LinearLayout>
 
-            <!-- MINHA LISTA -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
+        </androidx.core.widget.NestedScrollView>
 
-                <Button
-                    android:id="@+id/btnMyList"
-                    android:text="@string/add_to_mylist"
-                    android:textColor="@color/white"
-                    android:backgroundTint="@color/dark_gray"
-                    android:layout_margin="6dp"
-                    android:layout_width="220dp"
-                    android:layout_height="wrap_content"/>
+    </LinearLayout>
 
-            </LinearLayout>
+    <!-- Menu lateral drawer -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        android:background="@color/drawer_background"
+        app:menu="@menu/drawer_menu"
+        app:headerLayout="@layout/drawer_header"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:itemTextAppearance="@style/NavMenuItemAppearance" />
 
-            <!-- recomendados -->
-            <TextView
-                android:text="@string/recommended_titles"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:padding="16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <!-- RecyclerView: desabilitar nested scrolling para funcionar bem dentro do NestedScrollView -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_recommended"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:clipToPadding="false"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"/>
-
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
-
-</LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

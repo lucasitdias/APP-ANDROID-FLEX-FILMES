@@ -50,6 +50,10 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.play.services.maps3d)
 
+    // Image Loading
+    implementation(libs.glide)
+    annotationProcessor(libs.glide)
+
     // Testes
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
