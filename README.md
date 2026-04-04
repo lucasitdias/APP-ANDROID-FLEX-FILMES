@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 # 🎬 FlexFilmes
 
@@ -111,8 +110,4 @@ Desenvolvedor Android | Estudante de tecnologia |
 
 Este projeto é de uso livre para fins de estudo e aprendizado.  
 Sinta-se à vontade para contribuir ou adaptar às suas necessidades.
-```
 
-=======
-# APP-ANDROID-JAVA-FLEX-FILMES
->>>>>>> 866de4f5f147f162f79ec3092933903fb975f6f1
