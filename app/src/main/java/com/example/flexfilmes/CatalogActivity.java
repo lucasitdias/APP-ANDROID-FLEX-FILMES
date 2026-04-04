@@ -22,50 +22,58 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Seção: Activity de Catálogo
+ *
+ * Esta Activity exibe as seções do catálogo, gerencia o drawer e a toolbar.
+ * Comentários padronizados: // Seção: descrição
+ */
 public class CatalogActivity extends AppCompatActivity {
 
+    // Seção: views e estado
     private RecyclerView recyclerMyList;
     private MovieAdapter currentAdapter;
     private List<Movie> allMoviesCache;
     private DrawerLayout drawerLayout;
 
+    // Seção: ciclo de vida
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
 
-        // Drawer e menu (inicializar antes de configurar a toolbar)
+        // Seção: Drawer e NavigationView (inicializar antes da toolbar)
         drawerLayout = findViewById(R.id.drawerLayout);
         NavigationView navigationView = findViewById(R.id.navigationView);
 
-        // configurar toolbar padronizada (ajustada para esta Activity)
+        // Seção: configurar toolbar padronizada (ajustada para esta Activity)
         setupToolbar();
 
-        // ActionBar (opcional: mantém título)
+        // Seção: ActionBar (mantém título via string resources)
         if (getSupportActionBar() != null) {
-            // não mostramos o título padrão (usamos TextView centralizado)
+            // não mostramos o título padrão (usamos TextView centralizado no layout)
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
             getSupportActionBar().setDisplayShowHomeEnabled(false);
-            getSupportActionBar().setTitle("Catálogo");
+            getSupportActionBar().setTitle(getString(R.string.catalog));
         }
 
-        // Recycler principal (onde mostramos resultados de busca)
+        // Seção: Recycler principal (onde mostramos resultados de busca)
         recyclerMyList = findViewById(R.id.recycler_mylist);
         if (recyclerMyList != null) {
             recyclerMyList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         }
 
-        // Prepara cache com todos os filmes (para busca)
+        // Seção: Prepara cache com todos os filmes (para busca)
         allMoviesCache = new ArrayList<>();
         allMoviesCache.addAll(getContinueWatchingMovies());
         allMoviesCache.addAll(getMyListMovies());
         allMoviesCache.addAll(getTopPicksMovies());
         allMoviesCache.addAll(getRecentMovies());
 
-        // Exibe por padrão "Minha Lista"
+        // Seção: Exibe por padrão "Minha Lista"
         displayMovies(getMyListMovies());
 
-        // Menu lateral: listener completo
+        // Seção: Menu lateral - listener completo
         if (navigationView != null && drawerLayout != null) {
             navigationView.setNavigationItemSelectedListener(item -> {
                 int id = item.getItemId();
@@ -89,35 +97,40 @@ public class CatalogActivity extends AppCompatActivity {
             });
         }
 
-        // Seções (mantém as seções da tela principal)
+        // Seção: configurar seções horizontais da tela
         setupSection(R.id.recycler_continue, getContinueWatchingMovies(), true);
         setupSection(R.id.recycler_mylist, getMyListMovies(), false);
         setupSection(R.id.recycler_top, getTopPicksMovies(), false);
         setupSection(R.id.recycler_recent, getRecentMovies(), false);
 
-        // Se Activity foi aberta com open_search, abrir a busca automaticamente
+        // Seção: abrir busca automaticamente se solicitado pela Intent
         if (getIntent() != null && getIntent().getBooleanExtra("open_search", false)) {
             openSearchDialog();
         }
     }
 
-    // Exibe lista no recycler principal
+    // Seção: Exibe lista no recycler principal
     private void displayMovies(List<Movie> movies) {
         if (recyclerMyList == null) return;
         currentAdapter = new MovieAdapter(this, movies);
         recyclerMyList.setAdapter(currentAdapter);
     }
 
-    // Abre um diálogo com SearchView para busca rápida
+    /**
+     * Seção: Abre um diálogo com SearchView para busca rápida
+     *
+     * Observação: usa string resource para hint (padronização).
+     */
     private void openSearchDialog() {
         final SearchView searchView = new SearchView(this);
         searchView.setIconifiedByDefault(false);
-        searchView.setQueryHint("Pesquisar filmes");
+        // Seção: usar string resource para hint
+        searchView.setQueryHint(getString(R.string.search_hint));
 
         AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle("Pesquisar")
+                .setTitle(getString(R.string.search_title))
                 .setView(searchView)
-                .setNegativeButton("Fechar", (d, which) -> d.dismiss())
+                .setNegativeButton(getString(R.string.close), (d, which) -> d.dismiss())
                 .create();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -137,7 +150,7 @@ public class CatalogActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    // Executa a busca sobre allMoviesCache e atualiza o recycler
+    // Seção: Executa a busca sobre allMoviesCache e atualiza o recycler
     private void performSearch(String rawQuery) {
         if (rawQuery == null) rawQuery = "";
         String query = rawQuery.trim().toLowerCase();
@@ -150,7 +163,7 @@ public class CatalogActivity extends AppCompatActivity {
         }
 
         if (filtered.isEmpty()) {
-            Toast.makeText(this, "Nenhum filme encontrado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.no_results), Toast.LENGTH_SHORT).show();
         }
 
         // Se houver exatamente 1 resultado, abrir detalhe diretamente
@@ -170,7 +183,7 @@ public class CatalogActivity extends AppCompatActivity {
         displayMovies(filtered);
     }
 
-    // Configuração das listas
+    // Seção: Configuração das listas horizontais
     private void setupSection(int recyclerId, List<Movie> movies, boolean isContinue) {
         RecyclerView recyclerView = findViewById(recyclerId);
         if (recyclerView == null) return;
@@ -185,6 +198,7 @@ public class CatalogActivity extends AppCompatActivity {
         }
     }
 
+    // Seção: Dados de exemplo - Continuar assistindo
     public static List<Movie> getContinueWatchingMovies() {
         List<Movie> list = new ArrayList<>();
         list.add(new Movie("Duna", "Ficção científica épica", "Ficção científica", 2024, R.drawable.dune_movie_1));
@@ -192,6 +206,7 @@ public class CatalogActivity extends AppCompatActivity {
         return list;
     }
 
+    // Seção: Dados de exemplo - Minha lista
     public static List<Movie> getMyListMovies() {
         List<Movie> list = new ArrayList<>();
         list.add(new Movie("Jogos Vorazes", "A revolução começa", "Ação", 2023, R.drawable.jogos_vorazes));
@@ -200,6 +215,7 @@ public class CatalogActivity extends AppCompatActivity {
         return list;
     }
 
+    // Seção: Dados de exemplo - Principais escolhas
     public static List<Movie> getTopPicksMovies() {
         List<Movie> list = new ArrayList<>();
         list.add(new Movie("A Odisseia", "Clássico épico", "Drama", 2018, R.drawable.a_odisseia));
@@ -208,6 +224,7 @@ public class CatalogActivity extends AppCompatActivity {
         return list;
     }
 
+    // Seção: Dados de exemplo - Recentes
     public static List<Movie> getRecentMovies() {
         List<Movie> list = new ArrayList<>();
         list.add(new Movie("Picaretas Não Vão Pro Céu", "Drama nacional", "Drama", 2024, R.drawable.picaretas_nao_vao_pro_ceu));
@@ -217,14 +234,19 @@ public class CatalogActivity extends AppCompatActivity {
         return list;
     }
 
-    // Botão voltar
+    // Seção: botão voltar
     @Override
     public boolean onSupportNavigateUp() {
         finish();
         return true;
     }
 
-    // MÉTODO PADRÃO PARA CONFIGURAR TOOLBAR (ajustado)
+    /**
+     * Seção: MÉTODO PADRÃO PARA CONFIGURAR TOOLBAR (ajustado)
+     *
+     * - Usa lookup seguro para ImageViews opcionais e os remove (não esconde duplicidade).
+     * - Centraliza comportamento do logo/título.
+     */
     private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar_flexfilmes);
         if (toolbar == null) {
@@ -238,7 +260,7 @@ public class CatalogActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
-        // esconder ImageViews opcionais se existirem (usa lookup seguro)
+        // Seção: esconder ImageViews opcionais se existirem (usa lookup seguro)
         int searchId = getResources().getIdentifier("toolbar_search", "id", getPackageName());
         View searchIcon = (searchId != 0) ? toolbar.findViewById(searchId) : null;
         if (searchIcon != null) searchIcon.setVisibility(View.GONE);
@@ -247,11 +269,11 @@ public class CatalogActivity extends AppCompatActivity {
         View overflow = (overflowId != 0) ? toolbar.findViewById(overflowId) : null;
         if (overflow != null) overflow.setVisibility(View.GONE);
 
-        // seta de voltar à esquerda (ou comportamento que você definiu)
+        // Seção: seta de voltar à esquerda (ou comportamento que você definiu)
         toolbar.setNavigationIcon(R.drawable.icone_voltar);
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
 
-        // logo e título central clicáveis (levam para a home/catalog)
+        // Seção: logo e título central clicáveis (levam para a home/catalog)
         View logo = toolbar.findViewById(R.id.toolbar_logo);
         View title = toolbar.findViewById(R.id.toolbar_title);
         View.OnClickListener goHome = v -> {
@@ -262,17 +284,17 @@ public class CatalogActivity extends AppCompatActivity {
         if (logo != null) logo.setOnClickListener(goHome);
         if (title != null) title.setOnClickListener(goHome);
 
-        // Não usamos toolbar.setOnMenuItemClickListener aqui; usamos onCreateOptionsMenu / onOptionsItemSelected
+        // Seção: não usamos toolbar.setOnMenuItemClickListener aqui; usamos onCreateOptionsMenu / onOptionsItemSelected
     }
 
-    // Inflar menu específico desta Activity (apenas lupa e hambúrguer)
+    // Seção: Inflar menu específico desta Activity (apenas lupa e hambúrguer)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_catalog, menu); // ver instrução: criar menu_catalog.xml
         return true;
     }
 
-    // Tratar cliques dos itens do menu (lupa e hambúrguer)
+    // Seção: Tratar cliques dos itens do menu (lupa e hambúrguer)
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();

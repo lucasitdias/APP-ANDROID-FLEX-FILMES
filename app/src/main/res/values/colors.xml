@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Seção: paleta de cores do projeto FlexFilmes -->
 <resources>
-    <!-- Paleta principal (mantida conforme você pediu) -->
+    <!-- Paleta principal -->
     <color name="primary">#000000</color>
     <color name="primaryVariant">#000000</color>
     <color name="secondary">#6200EE</color>
+
+    <!-- Acentos -->
+    <color name="accent">#E50914</color>
 
     <!-- Neutros -->
     <color name="white">#FFFFFF</color>
     <color name="gray">#BDBDBD</color>
     <color name="gray_dark">#666666</color>
+    <color name="dark_gray">#444444</color>
 
-    <!-- Fundo (mantido conforme seu arquivo original) -->
+    <!-- Fundo -->
     <color name="background">#000000</color>
 
-    <!-- Overlay sutil para posters (opcional) -->
+    <!-- Overlay sutil para posters -->
     <color name="card_overlay">#80000000</color>
 
-    <!-- Acento (botões, highlights) -->
-    <color name="accent">#E50914</color>
-
-    <!-- Cores adicionadas necessárias para o drawer header e fundo do drawer -->
+    <!-- Drawer -->
     <color name="drawer_header_bg">#1F1F1F</color>
     <color name="drawer_background">#111111</color>
+
+    <color name="poster_overlay">#40FFFFFF</color>
+
 </resources>

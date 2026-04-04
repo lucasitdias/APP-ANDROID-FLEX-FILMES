@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Seção: layout de busca (SearchActivity) -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
 
-    <include layout="@layout/toolbar_flexfilmes" />
+    <include
+        layout="@layout/toolbar_flexfilmes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
+    <!-- SearchView ativado para busca -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="@string/search_hint" />
+        android:queryHint="@string/search_hint"
+        android:iconifiedByDefault="false" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_search_results"

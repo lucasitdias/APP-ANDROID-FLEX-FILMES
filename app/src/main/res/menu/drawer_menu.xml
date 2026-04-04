@@ -4,31 +4,31 @@
     <!-- Início -->
     <item
         android:id="@+id/nav_home"
-        android:title="Início" />
+        android:title="@string/nav_home" />
 
     <!-- Perfil -->
     <item
         android:id="@+id/nav_profile"
-        android:title="Perfil" />
+        android:title="@string/nav_profile" />
 
     <!-- Minha lista -->
     <item
         android:id="@+id/nav_mylist"
-        android:title="Minha lista" />
+        android:title="@string/nav_mylist" />
 
     <!-- Downloads -->
     <item
         android:id="@+id/nav_downloads"
-        android:title="Downloads" />
+        android:title="@string/nav_downloads" />
 
     <!-- Assinatura -->
     <item
         android:id="@+id/nav_subscription"
-        android:title="Assinatura" />
+        android:title="@string/nav_subscription" />
 
     <!-- Configurações -->
     <item
         android:id="@+id/nav_settings"
-        android:title="Configurações" />
+        android:title="@string/nav_settings" />
 
 </menu>

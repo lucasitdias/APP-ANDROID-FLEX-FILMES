@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!-- Layout Login
-     Alteração: checkbox "Lembre-se de mim" alinhado à esquerda abaixo do campo senha.
-     Mantive a estrutura original e apenas ajustei o comportamento do checkbox.
--->
+<!-- Seção: layout de login -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -28,7 +24,7 @@
         android:id="@+id/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FlexFilmes"
+        android:text="@string/app_name"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/white"
@@ -46,8 +42,9 @@
             android:id="@+id/input_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email ou número de telefone"
+            android:hint="@string/hint_email"
             android:inputType="textEmailAddress"
+            android:autofillHints="emailAddress"
             android:background="@drawable/edit_text_box"
             android:padding="12dp"
             android:textColor="@color/white"
@@ -59,21 +56,20 @@
             android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Senha"
+            android:hint="@string/hint_password"
             android:inputType="textPassword"
+            android:autofillHints="password"
             android:background="@drawable/edit_text_box"
             android:padding="12dp"
             android:textColor="@color/white"
             android:textColorHint="@color/gray"
             android:layout_marginBottom="8dp"/>
 
-        <!-- Checkbox alinhado à esquerda: ocupa largura total do container,
-             mas o texto fica alinhado ao início (start) respeitando o padding do root -->
         <CheckBox
             android:id="@+id/remember_me"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lembre-se de mim"
+            android:text="@string/remember_me"
             android:textColor="@color/gray"
             android:gravity="start"
             android:layout_marginBottom="16dp"/>
@@ -85,7 +81,7 @@
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ENTRAR"
+        android:text="@string/login_button"
         android:backgroundTint="@color/secondary"
         android:textColor="@color/white"
         android:textStyle="bold"
@@ -96,7 +92,7 @@
         android:id="@+id/help_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Precisa de ajuda?"
+        android:text="@string/help_text"
         android:textColor="@color/gray"
         android:textSize="16sp"
         android:clickable="true"
@@ -108,7 +104,7 @@
         android:id="@+id/signup_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Novo por aqui? Assine agora."
+        android:text="@string/signup_prompt"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -121,7 +117,7 @@
         android:id="@+id/recaptcha_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Esta página é protegida pelo Google reCAPTCHA para garantir que você não é um robô."
+        android:text="@string/recaptcha_notice"
         android:textColor="@color/gray"
         android:textSize="12sp"
         android:gravity="center"

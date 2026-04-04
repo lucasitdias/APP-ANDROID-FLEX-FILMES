@@ -19,19 +19,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+/**
+ * Seção: Activity de detalhe do filme
+ *
+ * Exibe informações do filme, permite compartilhar, adicionar à lista, baixar e avaliar.
+ * Comentários padronizados: // Seção: descrição
+ */
 public class MovieDetailActivity extends AppCompatActivity {
 
+    // Seção: views de avaliação
     private ImageView star1, star2, star3, star4, star5;
     private int rating = 0;
 
+    // Seção: ciclo de vida
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
 
-        // configurar toolbar padronizada (usa toolbar_flexfilmes do layout include)
+        // Seção: configurar toolbar padronizada (usa toolbar_flexfilmes do layout include)
         setupToolbar(true);
 
+        // Seção: bind das views
         ImageView imgMovie = findViewById(R.id.imgMovie);
         ImageView playOverlay = findViewById(R.id.playOverlay);
         TextView txtTitle = findViewById(R.id.txtTitle);
@@ -47,7 +56,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         star4 = findViewById(R.id.star4);
         star5 = findViewById(R.id.star5);
 
-        // Receber extras do Intent (agora incluindo genre e year)
+        // Seção: receber extras do Intent (inclui genre, year, age)
         String title = getIntent().getStringExtra("title");
         String description = getIntent().getStringExtra("description");
         int image = getIntent().getIntExtra("image", 0);
@@ -55,11 +64,11 @@ public class MovieDetailActivity extends AppCompatActivity {
         String genre = getIntent().getStringExtra("genre");
         String age = getIntent().getStringExtra("age");
 
-        // evitar nulls
+        // Seção: evitar nulls
         if (genre == null) genre = "";
         if (age == null) age = "";
 
-        // Mostrar dados na UI (verificações para evitar NPE)
+        // Seção: mostrar dados na UI (verificações para evitar NPE)
         if (txtTitle != null && title != null) {
             txtTitle.setText(title);
         }
@@ -75,24 +84,24 @@ public class MovieDetailActivity extends AppCompatActivity {
             imgMovie.setImageResource(image);
         }
 
-        // PLAY TRAILER (abre busca no YouTube)
+        // Seção: PLAY TRAILER (abre busca no YouTube)
         if (playOverlay != null) {
             playOverlay.setOnClickListener(v -> {
                 String q = (title != null) ? title : "";
-                String url = "https://www.youtube.com/results?search_query=" + q + "+trailer";
+                String url = "https://www.youtube.com/results?search_query=" + Uri.encode(q + " trailer");
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 startActivity(intent);
             });
         }
 
-        // DOWNLOAD
+        // Seção: DOWNLOAD
         if (btnDownload != null) {
             btnDownload.setOnClickListener(v ->
                     Toast.makeText(this, "Download iniciado: " + (title != null ? title : ""), Toast.LENGTH_SHORT).show()
             );
         }
 
-        // COMPARTILHAR
+        // Seção: COMPARTILHAR
         if (btnShare != null) {
             btnShare.setOnClickListener(v -> {
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
@@ -103,21 +112,21 @@ public class MovieDetailActivity extends AppCompatActivity {
             });
         }
 
-        // MINHA LISTA
+        // Seção: MINHA LISTA
         if (btnMyList != null) {
             btnMyList.setOnClickListener(v ->
                     Toast.makeText(this, "Adicionado à Minha Lista", Toast.LENGTH_SHORT).show()
             );
         }
 
-        // SISTEMA DE ESTRELAS
+        // Seção: SISTEMA DE ESTRELAS
         if (star1 != null) star1.setOnClickListener(v -> setRating(1));
         if (star2 != null) star2.setOnClickListener(v -> setRating(2));
         if (star3 != null) star3.setOnClickListener(v -> setRating(3));
         if (star4 != null) star4.setOnClickListener(v -> setRating(4));
         if (star5 != null) star5.setOnClickListener(v -> setRating(5));
 
-        // FILMES RECOMENDADOS
+        // Seção: FILMES RECOMENDADOS
         RecyclerView recyclerRecommended = findViewById(R.id.recycler_recommended);
         if (recyclerRecommended != null) {
             recyclerRecommended.setLayoutManager(
@@ -132,6 +141,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         }
     }
 
+    // Seção: atualizar UI das estrelas
     private void setRating(int value) {
         rating = value;
         ImageView[] stars = {star1, star2, star3, star4, star5};
@@ -145,7 +155,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         }
     }
 
-    // Inflar menu específico desta Activity
+    // Seção: Inflar menu específico desta Activity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         try {
@@ -156,7 +166,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         }
     }
 
-    // Tratar cliques do menu
+    // Seção: Tratar cliques do menu
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -177,7 +187,11 @@ public class MovieDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // setupToolbar sem inflar menu global
+    /**
+     * Seção: setupToolbar
+     *
+     * Configura toolbar padrão e listener único para o menu (sem duplicações).
+     */
     private void setupToolbar(boolean showBackArrow) {
         Toolbar toolbar = findViewById(R.id.toolbar_flexfilmes);
         if (toolbar == null) toolbar = findViewById(R.id.toolbar);
@@ -188,6 +202,7 @@ public class MovieDetailActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
+        // Seção: logo e título central clicáveis
         View logo = toolbar.findViewById(R.id.toolbar_logo);
         View title = toolbar.findViewById(R.id.toolbar_title);
         View.OnClickListener goHome = v -> {
@@ -198,8 +213,8 @@ public class MovieDetailActivity extends AppCompatActivity {
         if (logo != null) logo.setOnClickListener(goHome);
         if (title != null) title.setOnClickListener(goHome);
 
+        // Seção: seta de voltar
         if (showBackArrow) {
-            // seta de voltar
             toolbar.setNavigationIcon(R.drawable.icone_voltar);
             toolbar.setNavigationContentDescription("Voltar");
             toolbar.setNavigationOnClickListener(v -> {
@@ -212,7 +227,7 @@ public class MovieDetailActivity extends AppCompatActivity {
             toolbar.setNavigationIcon(null);
         }
 
-        // overflow (lookup seguro)
+        // Seção: overflow (lookup seguro)
         int overflowId = getResources().getIdentifier("toolbar_overflow", "id", getPackageName());
         View overflow = (overflowId != 0) ? toolbar.findViewById(overflowId) : null;
         if (overflow != null) {
@@ -220,6 +235,7 @@ public class MovieDetailActivity extends AppCompatActivity {
             overflow.setOnClickListener(v -> toolbarFinal.showOverflowMenu());
         }
 
+        // Seção: listener único do menu (corrige duplicações anteriores)
         toolbar.setOnMenuItemClickListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.menu_profile) {
@@ -236,9 +252,6 @@ public class MovieDetailActivity extends AppCompatActivity {
                 return true;
             } else if (itemId == R.id.menu_settings) {
                 Toast.makeText(this, "Configurações", Toast.LENGTH_SHORT).show();
-                return true;
-            } else if (itemId == R.id.action_more) {
-                Toast.makeText(this, "Mais opções", Toast.LENGTH_SHORT).show();
                 return true;
             }
             return false;

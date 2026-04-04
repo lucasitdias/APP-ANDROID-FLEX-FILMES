@@ -13,19 +13,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+/**
+ * Seção: Activity Minha Lista
+ *
+ * Exibe os filmes salvos pelo usuário e reutiliza a toolbar padronizada.
+ * Comentários padronizados: // Seção: descrição
+ */
 public class MyListActivity extends AppCompatActivity {
 
+    // Seção: views
     private RecyclerView recyclerMyList;
 
+    // Seção: ciclo de vida
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mylist); // ajuste se o layout tiver outro nome
 
-        // configurar toolbar padronizada (sem seta de voltar nesta tela)
+        // Seção: configurar toolbar padronizada (sem seta de voltar nesta tela)
         setupToolbar(false);
 
-        // RecyclerView de "Minha Lista"
+        // Seção: RecyclerView de "Minha Lista"
         recyclerMyList = findViewById(R.id.recycler_mylist);
         if (recyclerMyList != null) {
             recyclerMyList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -35,7 +43,11 @@ public class MyListActivity extends AppCompatActivity {
         }
     }
 
-    // Método padronizado para configurar toolbar (mesma implementação usada nas outras Activities)
+    /**
+     * Seção: Método padronizado para configurar toolbar
+     *
+     * @param showBackArrow se true, mostra ícone de voltar; se false, remove ícone de navegação
+     */
     private void setupToolbar(boolean showBackArrow) {
         Toolbar toolbar = findViewById(R.id.toolbar_flexfilmes);
         if (toolbar == null) {
@@ -45,12 +57,12 @@ public class MyListActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-        // evita título duplicado (desabilita o título padrão da ActionBar)
+        // Seção: evita título duplicado (desabilita o título padrão da ActionBar)
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
-        // logo e título central clicáveis (levam para a home/catalog)
+        // Seção: logo e título central clicáveis (levam para a home/catalog)
         View logo = toolbar.findViewById(R.id.toolbar_logo);
         View title = toolbar.findViewById(R.id.toolbar_title);
         View.OnClickListener goHome = v -> {
@@ -61,6 +73,7 @@ public class MyListActivity extends AppCompatActivity {
         if (logo != null) logo.setOnClickListener(goHome);
         if (title != null) title.setOnClickListener(goHome);
 
+        // Seção: seta de voltar (quando solicitado)
         if (showBackArrow) {
             toolbar.setNavigationIcon(R.drawable.icone_voltar);
             toolbar.setNavigationContentDescription("Voltar");
@@ -74,7 +87,7 @@ public class MyListActivity extends AppCompatActivity {
             toolbar.setNavigationIcon(null);
         }
 
-        // overflow custom (ImageView) abre o menu de overflow — lookup seguro
+        // Seção: overflow custom (ImageView) abre o menu de overflow — lookup seguro
         int overflowId = getResources().getIdentifier("toolbar_overflow", "id", getPackageName());
         View overflow = (overflowId != 0) ? toolbar.findViewById(overflowId) : null;
         if (overflow != null) {
@@ -82,7 +95,7 @@ public class MyListActivity extends AppCompatActivity {
             overflow.setOnClickListener(v -> toolbarFinal.showOverflowMenu());
         }
 
-        // tratar clique do ícone de busca (lookup seguro)
+        // Seção: tratar clique do ícone de busca (lookup seguro)
         int searchId = getResources().getIdentifier("toolbar_search", "id", getPackageName());
         View searchIcon = (searchId != 0) ? toolbar.findViewById(searchId) : null;
         if (searchIcon != null) {
@@ -93,7 +106,7 @@ public class MyListActivity extends AppCompatActivity {
             });
         }
 
-        // tratar cliques do menu (overflow)
+        // Seção: listener único do menu (corrige duplicações anteriores)
         toolbar.setOnMenuItemClickListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.menu_profile) {
@@ -110,9 +123,6 @@ public class MyListActivity extends AppCompatActivity {
                 return true;
             } else if (itemId == R.id.menu_settings) {
                 Toast.makeText(this, "Configurações", Toast.LENGTH_SHORT).show();
-                return true;
-            } else if (itemId == R.id.action_more) {
-                Toast.makeText(this, "Mais opções", Toast.LENGTH_SHORT).show();
                 return true;
             }
             return false;

@@ -1,49 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- App -->
-    <string name="app_name">FlexFilmes</string>
-
-    <!-- Toolbar / acessibilidade -->
+    <!-- Toolbar and accessibility -->
     <string name="desc_search">Pesquisar</string>
-    <string name="desc_menu">Abrir menu</string>
+    <string name="menu_profile">Perfil</string>
+    <string name="menu_catalog">Catálogo</string>
+    <string name="menu_home">Início</string>
+    <string name="menu_mylist">Minha lista</string>
+    <string name="menu_settings">Configurações</string>
+    <string name="action_more_desc">Mais opções</string>
 
-    <!-- Hints e botões -->
-    <string name="hint_user">Usuário</string>
+    <!-- Search -->
+    <string name="search_hint">Pesquisar filmes</string>
+    <string name="search_title">Pesquisar</string>
+    <string name="search">Pesquisar</string>
+    <string name="no_results">Nenhum filme encontrado</string>
+
+    <!-- Login and Signup -->
+    <string name="hint_email">Email ou número de telefone</string>
     <string name="hint_password">Senha</string>
+    <string name="remember_me">Lembre-se de mim</string>
+    <string name="login_button">ENTRAR</string>
     <string name="login">Login</string>
     <string name="forgot_password">Esqueceu a senha?</string>
     <string name="register">Cadastrar</string>
+    <string name="create_account_title">Criar conta</string>
+    <string name="signup_success">Cadastro realizado com sucesso!</string>
+    <string name="fill_all_fields">Preencha todos os campos.</string>
+    <string name="help_text">Precisa de ajuda?</string>
+    <string name="signup_prompt">Novo por aqui? Assine agora.</string>
 
-    <!-- Navegação / telas -->
-    <string name="home">Início</string>
-    <string name="catalog">Catálogo</string>
-    <string name="label_mylist">Minha lista</string>
+    <!-- Main screen -->
+    <string name="welcome_text">Bem-vindo ao FlexFilmes</string>
+    <string name="open_catalog">Abrir Catálogo</string>
+    <string name="open_mylist">Minha Lista</string>
+
+    <!-- Catalog labels -->
     <string name="label_continue">Continuar assistindo</string>
+    <string name="label_mylist">Minha lista</string>
     <string name="label_top">Principais escolhas para você</string>
     <string name="label_recent">Adicionados recentemente</string>
 
-    <!-- Menus e ações -->
-    <string name="search">Pesquisar</string>
+    <!-- Movie detail -->
+    <string name="movie_poster_description">Poster do filme</string>
+    <string name="watch_trailer">Assistir trailer</string>
+    <string name="download">Download</string>
+    <string name="share">Compartilhar</string>
+    <string name="add_to_mylist">+ Minha Lista</string>
+    <string name="recommended_titles">Títulos semelhantes</string>
+
+    <!-- Rating accessibility -->
+    <string name="rating_star_1">Avaliação 1 estrela</string>
+    <string name="rating_star_2">Avaliação 2 estrelas</string>
+    <string name="rating_star_3">Avaliação 3 estrelas</string>
+    <string name="rating_star_4">Avaliação 4 estrelas</string>
+    <string name="rating_star_5">Avaliação 5 estrelas</string>
+
+    <!-- App -->
+    <string name="app_name">FlexFilmes</string>
+
+    <!-- Navigation Drawer -->
+    <string name="nav_home">Início</string>
+    <string name="nav_profile">Perfil</string>
+    <string name="nav_mylist">Minha lista</string>
+    <string name="nav_downloads">Downloads</string>
+    <string name="nav_subscription">Assinatura</string>
+    <string name="nav_settings">Configurações</string>
+    <string name="navigation_drawer_open">Abrir menu de navegação</string>
+    <string name="navigation_drawer_close">Fechar menu de navegação</string>
+    <string name="profile_avatar">Avatar do perfil</string>
+    <string name="guest_user">Usuário Convidado</string>
+    <string name="guest_email">convidado@flexfilmes.com</string>
+
+    <!-- Toolbar and Menus -->
+    <string name="action_search">Buscar</string>
+    <string name="action_menu">Menu</string>
     <string name="menu">Menu</string>
+    <string name="settings">Configurações</string>
+
+    <!-- Título/descrição do menu (usado em menu_movie_detail/menu_toolbar) -->
+    <string name="desc_menu">Menu</string>
+
+    <!-- Menu Toolbar items (labels usados em menu_toolbar.xml) -->
     <string name="profile">Perfil</string>
+    <string name="catalog">Catálogo</string>
+    <string name="home">Início</string>
     <string name="action_settings">Configurações</string>
-    <string name="action_more">Mais</string>
-    <string name="action_more_desc">Mais opções</string>
 
-    <!-- Mensagens e textos curtos -->
-    <string name="no_results">Nenhum filme encontrado</string>
-    <string name="search_title">Pesquisar</string>
+    <!-- Movie details and placeholders -->
+    <string name="info">Informações</string>
+    <string name="title_placeholder">Título</string>
+    <string name="description_short">Descrição curta</string>
+    <string name="genre_placeholder">Gênero: Ação</string>
+    <string name="info_year_placeholder">Ano: 2024</string>
+    <string name="info_age_placeholder">(Livre) +17</string>
+
+    <!-- Generic UI -->
     <string name="close">Fechar</string>
-
-    <!-- Labels de botões e ações -->
     <string name="play">PLAY</string>
-    <string name="download">DOWNLOAD</string>
-    <string name="share">COMPARTILHAR</string>
-
-    <!-- Outros rótulos usados -->
     <string name="age_label">Faixa Etária</string>
     <string name="genre_label">Gênero</string>
+    <string name="recaptcha_notice">Esta página é protegida pelo Google reCAPTCHA para garantir que você não é um robô.</string>
 
-    <string name="search_hint">Pesquisar filmes</string>
+    <!-- Toasts and actions -->
+    <string name="added_to_mylist">Adicionado à Minha Lista</string>
+    <string name="download_started">Download iniciado: %1$s</string>
+    <string name="share_via">Compartilhar via</string>
+
+    <!-- Auth / Forms -->
+    <string name="hint_name">Nome completo</string>
+    <string name="signup_button">CADASTRAR</string>
+
 </resources>

@@ -1,52 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Caminho: app/src/main/res/layout/activity_main.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<!-- activity_main.xml — tela inicial simples com toolbar centralizada e botões de navegação -->
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="@color/background">
 
-    <!-- include toolbar padronizada -->
-    <include
-        layout="@layout/toolbar_flexfilmes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <!-- Conteúdo principal simples com botões de navegação -->
+    <!-- Conteúdo principal -->
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:padding="24dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/welcomeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bem-vindo ao FlexFilmes"
-            android:textColor="@android:color/white"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="24dp" />
+<!--        &lt;!&ndash; include toolbar padronizada &ndash;&gt;-->
+<!--        <include-->
+<!--            layout="@layout/toolbar_flexfilmes"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content" />-->
 
-        <Button
-            android:id="@+id/btnOpenCatalog"
-            android:layout_width="220dp"
-            android:layout_height="48dp"
-            android:text="Abrir Catálogo"
-            android:backgroundTint="#E50914"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="12dp" />
+        <!-- Conteúdo central -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-        <Button
-            android:id="@+id/btnOpenMyList"
-            android:layout_width="220dp"
-            android:layout_height="48dp"
-            android:text="Minha Lista"
-            android:backgroundTint="#444444"
-            android:textColor="@android:color/white" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="24dp">
 
+                <!-- Espaço para logo grande (opcional) -->
+                <ImageView
+                    android:id="@+id/main_logo"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@mipmap/ic_launcher"
+                    android:contentDescription="@string/app_name"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Texto de boas-vindas -->
+                <TextView
+                    android:id="@+id/txtWelcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/welcome_text"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Botões de navegação rápida -->
+                <Button
+                    android:id="@+id/btnOpenCatalog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/open_catalog"
+                    android:layout_marginBottom="12dp"
+                    android:backgroundTint="@color/secondary"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btnOpenMyList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/open_mylist"
+                    android:layout_marginBottom="12dp"
+                    android:backgroundTint="@color/secondary"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btnOpenLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/login"
+                    android:layout_marginBottom="12dp"
+                    android:backgroundTint="@color/dark_gray"
+                    android:textColor="@color/white" />
+
+                <!-- Espaço inferior flexível -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
-</LinearLayout>
+    <!-- Navigation drawer (mesmo menu usado no catálogo) -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/drawer_menu"
+        app:headerLayout="@layout/drawer_header"
+        app:itemIconTint="@null"
+        android:background="@color/drawer_background" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- menu_catalog.xml -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Lupa: abre diálogo de busca -->
     <item
         android:id="@+id/action_search"
-        android:icon="@drawable/ic_search"
         android:title="@string/search"
-        app:showAsAction="ifRoom" />
+        android:icon="@drawable/ic_search"
+        app:showAsAction="always" />
 
+    <!-- Hambúrguer: abre drawer (se usado como item de menu) -->
     <item
         android:id="@+id/action_hamburger"
-        android:icon="@drawable/ic_menu"
         android:title="@string/menu"
+        android:icon="@drawable/ic_menu"
         app:showAsAction="always" />
+
+    <!-- Espaço para itens adicionais do catálogo -->
+    <item
+        android:id="@+id/action_profile"
+        android:title="@string/profile"
+        android:icon="@drawable/icone_perfil"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_info_outline"
+        app:showAsAction="never" />
+
 </menu>

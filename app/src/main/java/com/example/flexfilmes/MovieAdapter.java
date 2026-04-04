@@ -14,16 +14,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+/**
+ * Seção: Adapter de filmes
+ *
+ * Adapter responsável por popular os itens de filme na lista horizontal/vertical.
+ * Proteções contra NPE e comportamento consistente de clique para abrir detalhe.
+ */
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
+    // Seção: estado
     private final Context context;
     private final List<Movie> movieList;
 
+    // Seção: construtor
     public MovieAdapter(Context context, List<Movie> movieList) {
         this.context = context;
         this.movieList = movieList;
     }
 
+    // Seção: criação do ViewHolder
     @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,47 +42,59 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         return new MovieViewHolder(view);
     }
 
+    // Seção: bind dos dados ao ViewHolder
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
+        if (movieList == null || position < 0 || position >= movieList.size()) return;
         Movie movie = movieList.get(position);
+        if (movie == null) return;
 
         // Título e descrição
-        holder.txtTitle.setText(movie.getTitle() != null ? movie.getTitle() : "");
-        holder.txtDescription.setText(movie.getDescription() != null ? movie.getDescription() : "");
+        if (holder.txtTitle != null) {
+            holder.txtTitle.setText(movie.getTitle() != null ? movie.getTitle() : "");
+        }
+        if (holder.txtDescription != null) {
+            holder.txtDescription.setText(movie.getDescription() != null ? movie.getDescription() : "");
+        }
 
-        // Poster
-        holder.imgMovie.setImageResource(movie.getImageResId());
+        // Poster (proteção contra recursos inválidos)
+        try {
+            if (holder.imgMovie != null) {
+                holder.imgMovie.setImageResource(movie.getImageResId());
+            }
+        } catch (Exception ignored) { }
 
-        // Gênero (novo)
+        // Gênero
         String genre = (movie.getGenre() != null && !movie.getGenre().isEmpty()) ? movie.getGenre() : "Gênero desconhecido";
-        holder.txtGenre.setText("Gênero: " + genre);
+        if (holder.txtGenre != null) holder.txtGenre.setText("Gênero: " + genre);
 
         // Ano
         String infoYear = (movie.getYear() != 0) ? String.valueOf(movie.getYear()) : "2024";
-        holder.txtInfoYear.setText("Ano: " + infoYear);
+        if (holder.txtInfoYear != null) holder.txtInfoYear.setText("Ano: " + infoYear);
 
-        // Faixa etária: usar formato solicitado "(Livre) +17" — se o Movie tiver ageRating, usa; senão fallback
+        // Faixa etária
         String age = (movie.getAgeRating() != null && !movie.getAgeRating().isEmpty()) ? movie.getAgeRating() : "+17";
-        holder.txtInfoAge.setText("(Livre) " + age);
+        if (holder.txtInfoAge != null) holder.txtInfoAge.setText("(Livre) " + age);
 
-        // Garantir visibilidade e contraste
-        holder.txtInfoYear.setVisibility(View.VISIBLE);
-        holder.txtInfoAge.setVisibility(View.VISIBLE);
-        holder.txtDescription.setVisibility(View.VISIBLE);
-        holder.txtGenre.setVisibility(View.VISIBLE);
+        // Garantir visibilidade
+        if (holder.txtInfoYear != null) holder.txtInfoYear.setVisibility(View.VISIBLE);
+        if (holder.txtInfoAge != null) holder.txtInfoAge.setVisibility(View.VISIBLE);
+        if (holder.txtDescription != null) holder.txtDescription.setVisibility(View.VISIBLE);
+        if (holder.txtGenre != null) holder.txtGenre.setVisibility(View.VISIBLE);
 
+        // Cores com fallback
         try {
             int gray = ContextCompat.getColor(context, R.color.gray);
-            holder.txtInfoYear.setTextColor(gray);
-            holder.txtInfoAge.setTextColor(gray);
-            holder.txtGenre.setTextColor(gray);
+            if (holder.txtInfoYear != null) holder.txtInfoYear.setTextColor(gray);
+            if (holder.txtInfoAge != null) holder.txtInfoAge.setTextColor(gray);
+            if (holder.txtGenre != null) holder.txtGenre.setTextColor(gray);
         } catch (Exception e) {
-            holder.txtInfoYear.setTextColor(0xFFCCCCCC);
-            holder.txtInfoAge.setTextColor(0xFFCCCCCC);
-            holder.txtGenre.setTextColor(0xFFCCCCCC);
+            if (holder.txtInfoYear != null) holder.txtInfoYear.setTextColor(0xFFCCCCCC);
+            if (holder.txtInfoAge != null) holder.txtInfoAge.setTextColor(0xFFCCCCCC);
+            if (holder.txtGenre != null) holder.txtGenre.setTextColor(0xFFCCCCCC);
         }
 
-        // Ação de abrir detalhe (passa extras: title, description, image, year, genre, age)
+        // Clique abre detalhe (apenas em clique, não em mudanças de texto)
         View.OnClickListener openDetail = v -> {
             Intent intent = new Intent(context, MovieDetailActivity.class);
             intent.putExtra("title", movie.getTitle());
@@ -88,16 +109,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             context.startActivity(intent);
         };
 
-        holder.imgMovie.setOnClickListener(openDetail);
+        if (holder.imgMovie != null) holder.imgMovie.setOnClickListener(openDetail);
         if (holder.btnPlayOverlay != null) holder.btnPlayOverlay.setOnClickListener(openDetail);
         holder.itemView.setOnClickListener(openDetail);
     }
 
+    // Seção: contagem de itens
     @Override
     public int getItemCount() {
         return movieList != null ? movieList.size() : 0;
     }
 
+    // Seção: ViewHolder
     public static class MovieViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imgMovie;
@@ -105,20 +128,21 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
         TextView txtTitle;
         TextView txtDescription;
-        TextView txtGenre;       // novo
+        TextView txtGenre;
         TextView txtInfoYear;
         TextView txtInfoAge;
 
         public MovieViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            // Bind das views (IDs esperados no layout item_movie.xml)
             imgMovie = itemView.findViewById(R.id.imgMovie);
             btnPlayOverlay = itemView.findViewById(R.id.btnPlayOverlay);
 
             txtTitle = itemView.findViewById(R.id.txtTitle);
             txtDescription = itemView.findViewById(R.id.txtDescription);
 
-            txtGenre = itemView.findViewById(R.id.txtGenre);   // novo
+            txtGenre = itemView.findViewById(R.id.txtGenre);
 
             txtInfoYear = itemView.findViewById(R.id.txtInfoYear);
             txtInfoAge = itemView.findViewById(R.id.txtInfoAge);

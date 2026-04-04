@@ -1,27 +1,29 @@
 package com.example.flexfilmes;
 
-// Modelo Movie atualizado: inclui genre e mantém compatibilidade com construtores antigos.
+/**
+ * Modelo Movie atualizado: inclui genre, ageRating e flag posterLight.
+ * Mantém compatibilidade com construtores antigos usados no projeto.
+ */
 public class Movie {
 
-    // Atributos
     private final String title;
     private final String description;
-    private final String genre;       // novo campo
-    private final int year;           // já existia
-    private final int imageResId;     // id do drawable
-    private final String ageRating;   // faixa etária (opcional)
+    private final String genre;
+    private final int year;
+    private final int imageResId;
+    private final String ageRating;
 
-    // flag para indicar se o poster é claro (overlay)
+    // Flag para controlar overlay em posters claros
     private boolean posterLight = false;
 
-    // Construtor completo (recomendado)
+    // Construtor completo
     public Movie(String title, String description, String genre, int year, int imageResId, String ageRating) {
         this.title = title;
         this.description = description;
         this.genre = genre;
         this.year = year;
         this.imageResId = imageResId;
-        this.ageRating = ageRating;
+        this.ageRating = ageRating != null ? ageRating : "+14";
     }
 
     // Construtor usado em CatalogActivity (sem ageRating)
@@ -42,7 +44,7 @@ public class Movie {
     public int getImageResId() { return imageResId; }
     public String getAgeRating() { return ageRating; }
 
-    // getter e setter para posterLight
+    // posterLight
     public boolean isPosterLight() { return posterLight; }
     public void setPosterLight(boolean posterLight) { this.posterLight = posterLight; }
 }
